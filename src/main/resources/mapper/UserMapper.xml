@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wuyou.mapper.UserMapper">
+    <resultMap type="com.example.wuyou.model.entity.User" id="UserMap">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="mobile" column="mobile" jdbcType="CHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="role" column="role" jdbcType="SMALLINT"/>
+        <result property="companyId" column="company_id" jdbcType="CHAR"/>
+        <result property="enableStatus" column="enable_status" jdbcType="BOOLEAN"/>
+        <result property="authId" column="auth_id" jdbcType="CHAR"/>
+        <result property="registerDate" column="register_date" jdbcType="DOUBLE"/>
+    </resultMap>
+
+    <!-- 通过ID查询单条数据 -->
+    <select id="getInfo" resultMap="UserMap">
+        select
+        id,username,password,mobile,avatar,role,company_id,enable_status,auth_id,register_date
+        from user
+    </select>
+
+    <!--分页查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserMap">
+        select
+        id,username,password,mobile,avatar,role,company_id,enable_status,auth_id,register_date
+        from user
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="mobile != null and mobile != ''">
+                and mobile = #{mobile}
+            </if>
+            <if test="avatar != null and avatar != ''">
+                and avatar = #{avatar}
+            </if>
+            <if test="role != null and role != ''">
+                and role = #{role}
+            </if>
+            <if test="companyId != null and companyId != ''">
+                and company_id = #{companyId}
+            </if>
+            <if test="enableStatus != null and enableStatus != ''">
+                and enable_status = #{enableStatus}
+            </if>
+            <if test="authId != null and authId != ''">
+                and auth_id = #{authId}
+            </if>
+            <if test="registerDate != null and registerDate != ''">
+                and register_date = #{registerDate}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from user
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="mobile != null and mobile != ''">
+                and mobile = #{mobile}
+            </if>
+            <if test="avatar != null and avatar != ''">
+                and avatar = #{avatar}
+            </if>
+            <if test="role != null and role != ''">
+                and role = #{role}
+            </if>
+            <if test="companyId != null and companyId != ''">
+                and company_id = #{companyId}
+            </if>
+            <if test="enableStatus != null and enableStatus != ''">
+                and enable_status = #{enableStatus}
+            </if>
+            <if test="authId != null and authId != ''">
+                and auth_id = #{authId}
+            </if>
+            <if test="registerDate != null and registerDate != ''">
+                and register_date = #{registerDate}
+            </if>
+        </where>
+    </select>
+
+    <!--新增数据-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into user(id,username,password,mobile,avatar,role,company_id,enable_status,auth_id,register_date)
+        values (#{id},#{username},#{password},#{mobile},#{avatar},#{role},#{companyId},#{enableStatus},#{authId},#{registerDate})
+    </insert>
+
+    <!-- 批量新增数据 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into user(id,username,password,mobile,avatar,role,company_id,enable_status,auth_id,register_date)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id},#{entity.username},#{entity.password},#{entity.mobile},#{entity.avatar},#{entity.role},#{entity.companyId},#{entity.enableStatus},#{entity.authId},#{entity.registerDate})
+        </foreach>
+    </insert>
+
+    <!-- 批量新增或按主键更新数据 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into user(id,username,password,mobile,avatar,role,company_id,enable_status,auth_id,register_date)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id},#{entity.username},#{entity.password},#{entity.mobile},#{entity.avatar},#{entity.role},#{entity.companyId},#{entity.enableStatus},#{entity.authId},#{entity.registerDate})
+        </foreach>
+        on duplicate key update
+        id=values(id),
+        username=values(username),
+        password=values(password),
+        mobile=values(mobile),
+        avatar=values(avatar),
+        role=values(role),
+        company_id=values(company_id),
+        enable_status=values(enable_status),
+        auth_id=values(auth_id),
+        register_date=values(register_date)
+    </insert>
+
+    <!-- 更新数据 -->
+    <update id="update">
+        update user
+        <set>
+            <if test="id != null and id != ''">
+                id = #{id},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="mobile != null and mobile != ''">
+                mobile = #{mobile},
+            </if>
+            <if test="avatar != null and avatar != ''">
+                avatar = #{avatar},
+            </if>
+            <if test="role != null and role != ''">
+                role = #{role},
+            </if>
+            <if test="companyId != null and companyId != ''">
+                company_id = #{companyId},
+            </if>
+            <if test="enableStatus != null and enableStatus != ''">
+                enable_status = #{enableStatus},
+            </if>
+            <if test="authId != null and authId != ''">
+                auth_id = #{authId},
+            </if>
+            <if test="registerDate != null and registerDate != ''">
+                register_date = #{registerDate},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from user where id = #{id}
+    </delete>
+</mapper>
