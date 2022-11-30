@@ -3,11 +3,11 @@ package com.example.wuyou.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.wuyou.model.entity.User;
 import com.example.wuyou.service.UserService;
-
+import com.example.wuyou.common.BaseResponse;
+import com.example.wuyou.common.ResultUtils;
 /**
  * 用户信息;(user)表控制层
  * @author : One Direction
@@ -25,10 +25,12 @@ public class UserController{
      *
      * @return 实例对象
      */
-    @ApiOperation(value = "get接口传参")
-    @GetMapping("/get")
-    public ResponseEntity<User> getInfo(){
-        return ResponseEntity.ok(userService.getInfo());
+    @ApiOperation(value = "获取用户信息")
+    @GetMapping("/getUserInfo")
+    @ResponseBody
+    public BaseResponse<User> getUserInfo(){
+        User user = userService.getUserInfo();
+        return ResultUtils.success(user);
     }
 
 }

@@ -15,7 +15,7 @@
     </resultMap>
 
     <!-- 通过ID查询单条数据 -->
-    <select id="getInfo" resultMap="UserMap">
+    <select id="getUserInfo" resultMap="UserMap">
         select
         id,username,password,mobile,avatar,role,company_id,enable_status,auth_id,register_date
         from user

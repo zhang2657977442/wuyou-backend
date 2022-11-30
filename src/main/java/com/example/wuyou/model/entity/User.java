@@ -6,10 +6,10 @@ import java.io.Serializable;
 
 /**
  * 用户信息;
- * @author : http://www.chiner.pro
- * @date : 2022-11-18
+ * @author : One Direction
+ * @date : 2022-11-22
  */
-@ApiModel("用户模型")
+@ApiModel(value = "用户模型",description = "")
 public class User implements Serializable,Cloneable{
     @ApiModelProperty(name = "主键",notes = "")
     private String  id ;
@@ -27,7 +27,7 @@ public class User implements Serializable,Cloneable{
     private String avatar ;
     /** 用户角色 */
     @ApiModelProperty(name = "用户角色",notes = "")
-    private int role ;
+    private Integer role ;
     /** 公司id */
     @ApiModelProperty(name = "公司id",notes = "")
     private String companyId ;

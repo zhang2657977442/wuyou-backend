@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService{
      *
      * @return
      */
-    public User getInfo(){
-        return userMapper.getInfo();
+    public User getUserInfo(){
+        return userMapper.getUserInfo();
     }
 }
