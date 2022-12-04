@@ -11,6 +11,8 @@ spring:
     url: jdbc:mysql://47.95.245.28:3306/wuyou_recruit?characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
     username: root
     password: 661123
+    hikari:
+      max-lifetime: 120000
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

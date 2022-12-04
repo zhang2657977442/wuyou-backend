@@ -1,5 +1,8 @@
 package com.example.wuyou.common;
 
+import lombok.Data;
+
+@Data
 public class ResultUtils {
 
     /**
@@ -10,7 +13,7 @@ public class ResultUtils {
      * @return
      */
     public static <T> BaseResponse<T> success(T data) {
-        return new BaseResponse<>(0, data, "ok");
+        return new BaseResponse<>(0, data, "操作成功");
     }
 
     /**

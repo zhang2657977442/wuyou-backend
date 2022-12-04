@@ -8,5 +8,7 @@ public interface UserMapper {
      * 通过ID查询单条数据
      * @return 实例对象
      */
-    User getUserInfo();
+    User getUserInfo(String id);
+
+    int switchRole(String id, int role);
 }

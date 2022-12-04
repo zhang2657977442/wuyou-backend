@@ -1,6 +1,9 @@
 package com.example.wuyou.common;
 
 import com.example.wuyou.constant.CommonConstant;
+import lombok.Data;
+
+@Data
 public class PageRequest {
 
     /**
