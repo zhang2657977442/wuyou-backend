@@ -3,6 +3,7 @@
 <mapper namespace="com.example.wuyou.mapper.UserMapper">
     <resultMap type="com.example.wuyou.model.entity.User" id="UserMap">
         <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="openId" column="open_id" jdbcType="VARCHAR"/>
         <result property="username" column="username" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
         <result property="mobile" column="mobile" jdbcType="CHAR"/>
@@ -13,29 +14,4 @@
         <result property="authId" column="auth_id" jdbcType="CHAR"/>
         <result property="registerDate" column="register_date" jdbcType="DOUBLE"/>
     </resultMap>
-
-    <!-- 通过ID查询单条数据 -->
-    <select id="getUserInfo" resultMap="UserMap">
-        select
-        id,username,password,mobile,avatar,role,company_id,enable_status,auth_id,register_date
-        from user
-        where id = #{id}
-    </select>
-
-
-    <!-- 切换用户角色 -->
-    <update id="switchRole">
-        update user
-        <set>
-            <if test="role != null">
-                role = #{role},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from user where id = #{id}
-    </delete>
 </mapper>

@@ -5,5 +5,5 @@ public interface WXConfigConstant {
 
     String APP_ID = "wxfa637b9bab689989";
 
-    String SECRET = "dabf21a3b7dd1dde74516296dfcd7415";
+    String SECRET = "你的密钥";
 }

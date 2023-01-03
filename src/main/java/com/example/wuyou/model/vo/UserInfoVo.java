@@ -1,6 +1,9 @@
 package com.example.wuyou.model.vo;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import com.example.wuyou.model.enums.UserRoleEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -19,7 +22,7 @@ public class UserInfoVo implements Serializable {
     private String avatar ;
     /** 用户角色 */
     @ApiModelProperty(name = "用户角色",notes = "")
-    private Integer role ;
+    private UserRoleEnum role ;
     /** 公司id */
     @ApiModelProperty(name = "公司id",notes = "")
     private String companyId ;
@@ -28,5 +31,5 @@ public class UserInfoVo implements Serializable {
     private String authId ;
     /** 注册时间 */
     @ApiModelProperty(name = "注册时间",notes = "")
-    private Double registerDate ;
+    private Date registerDate ;
 }

@@ -3,9 +3,13 @@ package com.example.wuyou.model.enums;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum UserRoleEnum {
-    DEFAULT("求职者", 0),
-    BOSS("招聘者", 1);
+public enum ExperienceEnum {
+    BX("不限", 0),
+    ONE("1年以内", 1),
+    THREE("1-3年", 2),
+    FIVE("3-5年", 3),
+    TEN("5-10年", 4),
+    TENS("10年以上", 5);
 
     @EnumValue
     private final int value;
@@ -13,7 +17,7 @@ public enum UserRoleEnum {
     private final String text;
 
 
-    UserRoleEnum(String text, int value) {
+    ExperienceEnum(String text, int value) {
         this.text = text;
         this.value = value;
     }

@@ -6,6 +6,10 @@ server:
 spring:
   application:
     name: wuyou
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss  #时间戳统一转换为指定格式
+    time-zone: GMT+8  # 时区修改为东8区
+  # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://47.95.245.28:3306/wuyou_recruit?characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
@@ -18,4 +22,9 @@ spring:
       matching-strategy: ant_path_matcher
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
 
