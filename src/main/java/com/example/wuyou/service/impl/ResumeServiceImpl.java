@@ -1,11 +1,13 @@
 package com.example.wuyou.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.wuyou.common.ErrorCode;
 import com.example.wuyou.config.JwtConfig;
 import com.example.wuyou.exception.BusinessException;
 import com.example.wuyou.mapper.ResumeMapper;
 import com.example.wuyou.model.entity.Resume;
+import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,14 @@ public class ResumeServiceImpl implements ResumeService {
     public Boolean updateResume(Resume params){
          int count =  resumeMapper.updateById(params);
          return count > 0;
+    }
+
+    public PageListResponse getResumeList(long current, long pageSize){
+        // 分页查询
+        Page<Resume> page = resumeMapper.selectPage(new Page<>(current, pageSize), null);
+        PageListResponse result = new PageListResponse();
+        result.setList(page.getRecords());
+        result.setTotal(page.getTotal());
+        return result;
     }
 }

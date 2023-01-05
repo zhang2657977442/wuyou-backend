@@ -11,9 +11,11 @@ import com.example.wuyou.model.enums.UserRoleEnum;
 public class MetaHandler implements MetaObjectHandler {
 
     @Override
-    public void insertFill(MetaObject metaObject) { // 插入操作时，添加默认数据
+    public void insertFill(MetaObject metaObject) {
+        // 插入操作时，添加默认数据
         this.fillStrategy(metaObject,"role", UserRoleEnum.DEFAULT);
         this.fillStrategy(metaObject,"enableStatus", true);
+        this.fillStrategy(metaObject,"updateTime", new Date());
         this.fillStrategy(metaObject,"registerDate", new Date());
         this.fillStrategy(metaObject,"createTime", new Date());
 

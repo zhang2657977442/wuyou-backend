@@ -2,17 +2,14 @@ package com.example.wuyou.controller;
 
 import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.ResultUtils;
-import com.example.wuyou.model.dto.WxUserLoginRequest;
-import com.example.wuyou.model.dto.WxUserLoginResponse;
 import com.example.wuyou.model.entity.Resume;
-import com.example.wuyou.model.vo.UserInfoVo;
+import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.service.ResumeService;
+import com.example.wuyou.common.PageRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -39,6 +36,15 @@ public class ResumeController {
     @PostMapping("/updateResume")
     public BaseResponse<Boolean> updateResume(@RequestBody Resume params){
         Boolean result = resumeService.updateResume(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "获取简历列表")
+    @PostMapping("/getResumeList")
+    public BaseResponse<PageListResponse<Resume>> getResumeList(@RequestBody PageRequest params){
+        long current = params.getCurrent();
+        long pageSize = params.getPageSize();
+        PageListResponse<Resume> result = resumeService.getResumeList(current, pageSize);
         return ResultUtils.success(result);
     }
 

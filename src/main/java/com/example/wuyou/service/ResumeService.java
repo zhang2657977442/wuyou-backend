@@ -1,6 +1,7 @@
 package com.example.wuyou.service;
 
 import com.example.wuyou.model.entity.Resume;
+import com.example.wuyou.model.dto.PageListResponse;
 
 /**
  * 个人简历信息;(person_resume)表服务接口
@@ -12,4 +13,6 @@ public interface ResumeService{
     Resume getResumeInfo(String token);
 
     Boolean updateResume(Resume params);
+
+    PageListResponse getResumeList(long current, long pageSize);
 }
