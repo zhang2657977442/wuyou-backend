@@ -1,22 +1,22 @@
 package com.example.wuyou.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.wuyou.mapper.PositionMapper;
+import com.example.wuyou.mapper.WelfareMapper;
 import com.example.wuyou.model.dto.PageListResponse;
-import com.example.wuyou.model.entity.Position;
-import com.example.wuyou.service.PositionService;
+import com.example.wuyou.model.entity.Welfare;
+import com.example.wuyou.service.WelfareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PositionServiceImpl implements PositionService {
+public class WelfareServiceImpl implements WelfareService {
     @Autowired
-    private PositionMapper postMapper;
+    private WelfareMapper welfareMapper;
 
 
-    public PageListResponse getPositionList(long current, long pageSize){
+    public PageListResponse getWelfareList(long current, long pageSize){
         // 分页查询
-        Page<Position> page = postMapper.selectPage(new Page<>(current, pageSize), null);
+        Page<Welfare> page = welfareMapper.selectPage(new Page<>(current, pageSize), null);
         PageListResponse result = new PageListResponse();
         result.setList(page.getRecords());
         result.setTotal(page.getTotal());

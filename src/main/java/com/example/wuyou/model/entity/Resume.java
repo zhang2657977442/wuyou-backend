@@ -13,12 +13,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 个人简历信息;
+ * 简历信息;
  * @author : One Direction
  * @date : 2022-12-13
  */
 @Data
-@ApiModel(value = "个人简历信息",description = "")
+@ApiModel(value = "简历信息",description = "")
 @TableName(autoResultMap = true)
 public class Resume implements Serializable,Cloneable {
     /** 主键 */

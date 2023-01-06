@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 /**
- * 职位信息信息;
+ * 职位信息;
  * @author : One Direction
  * @date : 2022-11-18
  */
@@ -29,7 +29,7 @@ public class PositionController {
     public BaseResponse<PageListResponse<Position>> getPositionList(@RequestBody PageRequest params){
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
-        PageListResponse<Position> result = positionService.getPostList(current, pageSize);
+        PageListResponse<Position> result = positionService.getPositionList(current, pageSize);
         return ResultUtils.success(result);
     }
 

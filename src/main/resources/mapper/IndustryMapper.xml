@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wuyou.mapper.IndustryMapper">
+    <resultMap type="com.example.wuyou.model.entity.Industry" id="IndustryMap">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="pId" column="p_id" jdbcType="CHAR"/>
+        <result property="enableStatus" column="enable_status" jdbcType="BOOLEAN"/>
+        <result property="createTime" column="create_time" jdbcType="DOUBLE"/>
+        <result property="updateTime" column="update_time" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

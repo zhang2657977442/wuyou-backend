@@ -12,17 +12,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 职位信息;
+ * 行业信息;
  * @author : One Direction
  * @date : 2022-12-13
  */
 @Data
-@ApiModel(value = "职位信息",description = "")
+@ApiModel(value = "行业信息",description = "")
 @TableName(autoResultMap = true)
-public class Position implements Serializable,Cloneable {
-    /** 主键 */
+public class Industry implements Serializable,Cloneable{
     @ApiModelProperty(name = "主键",notes = "")
-    private String  id ;
+    private String id ;
     /** 名称 */
     @ApiModelProperty(name = "名称",notes = "")
     private String name ;
