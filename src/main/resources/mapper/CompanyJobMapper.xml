@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wuyou.mapper.CompanyJobMapper">
+    <resultMap type="com.example.wuyou.model.entity.CompanyJob" id="CompanyJobMap">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="companyId" column="company_id" jdbcType="CHAR"/>
+        <result property="postId" column="post_id" jdbcType="CHAR"/>
+        <result property="enableStatus" column="enable_status" jdbcType="BOOLEAN"/>
+        <result property="expRequire" column="exp_require" jdbcType="SMALLINT"/>
+        <result property="minEducation" column="min_education" jdbcType="SMALLINT"/>
+        <result property="salary" column="salary" jdbcType="SMALLINT"/>
+        <result property="jobType" column="job_type" jdbcType="SMALLINT"/>
+        <result property="skill" column="skill" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="DOUBLE"/>
+        <result property="updateTime" column="update_time" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

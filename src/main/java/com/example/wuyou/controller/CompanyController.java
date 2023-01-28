@@ -4,8 +4,8 @@ import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.PageRequest;
 import com.example.wuyou.common.ResultUtils;
 import com.example.wuyou.model.dto.PageListResponse;
-import com.example.wuyou.model.entity.Welfare;
-import com.example.wuyou.service.WelfareService;
+import com.example.wuyou.model.entity.CompanyJob;
+import com.example.wuyou.service.CompanyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * 福利信息;
+ * 公司相关信息;
  * @author : One Direction
  * @date : 2022-11-18
  */
-@Api(tags = "福利信息管理")
+@Api(tags = "公司相关信息")
 @RestController
-@RequestMapping("/welfare")
-public class WelfareController {
+@RequestMapping("/company")
+public class CompanyController {
     @Autowired
-    private WelfareService welfareService;
+    private CompanyService CompanyService;
 
-    @ApiOperation(value = "获取福利列表")
-    @PostMapping("/getWelfareList")
-    public BaseResponse<PageListResponse<Welfare>> getWelfareList(@RequestBody PageRequest params){
+    @ApiOperation(value = "获取公司职位")
+    @PostMapping("/getJobList")
+    public BaseResponse<PageListResponse<CompanyJob>> getJobList(@RequestBody PageRequest params){
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
-        PageListResponse<Welfare> result = welfareService.getWelfareList(current, pageSize);
+        PageListResponse<CompanyJob> result = CompanyService.getJobList(current, pageSize);
         return ResultUtils.success(result);
     }
 

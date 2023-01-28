@@ -73,6 +73,14 @@
             <artifactId>java-jwt</artifactId>
             <version>3.8.2</version>
         </dependency>
+        <!--  https://gitee.com/best_handsome/mybatis-plus-join/ -->
+        <dependency>
+            <groupId>com.github.yulichang</groupId>
+            <artifactId>mybatis-plus-join</artifactId>
+            <version>1.2.4</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
