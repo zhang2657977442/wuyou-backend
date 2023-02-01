@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wuyou.mapper.CompanyMapper">
+    <resultMap type="com.example.wuyou.model.entity.Company" id="CompanyMap">
+        <result property="id" column="id" jdbcType="CHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="fullName" column="full_name" jdbcType="VARCHAR"/>
+        <result property="logo" column="logo" jdbcType="VARCHAR"/>
+        <result property="industryId" column="industry_id" jdbcType="CHAR"/>
+        <result property="nature" column="nature" jdbcType="SMALLINT"/>
+        <result property="staffSize" column="staff_size" jdbcType="VARCHAR"/>
+        <result property="introduce" column="introduce" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="cityId" column="city_id" jdbcType="VARCHAR"/>
+        <result property="authId" column="auth_id" jdbcType="CHAR"/>
+        <result property="workTime" column="work_time" jdbcType="VARCHAR"/>
+        <result property="restTime" column="rest_time" jdbcType="VARCHAR"/>
+        <result property="workOvertime" column="work_overtime" jdbcType="VARCHAR"/>
+        <result property="enableStatus" column="enable_status" jdbcType="BOOLEAN"/>
+        <result property="createTime" column="create_time" jdbcType="DOUBLE"/>
+        <result property="updateTime" column="update_time" jdbcType="DOUBLE"/>
+    </resultMap>
+</mapper>

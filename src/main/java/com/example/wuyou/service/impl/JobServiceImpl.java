@@ -1,24 +1,25 @@
 package com.example.wuyou.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.wuyou.mapper.CompanyMapper;
+import com.example.wuyou.mapper.JobMapper;
 import com.example.wuyou.model.dto.PageListResponse;
-import com.example.wuyou.model.vo.CompanyInfoVo;
-import com.example.wuyou.service.CompanyService;
+import com.example.wuyou.model.vo.JobInfoVo;
+import com.example.wuyou.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompanyServiceImpl implements CompanyService {
+public class JobServiceImpl implements JobService {
     @Autowired
-    private CompanyMapper companyMapper;
+    private JobMapper jobMapper;
 
-    public PageListResponse getCompanyList(long current, long pageSize){
+    public PageListResponse getJobList(long current, long pageSize){
         // 分页查询
-        Page<CompanyInfoVo> page = companyMapper.selectCompanyPage(new Page<>(current, pageSize));
+        Page<JobInfoVo> page = jobMapper.selectJobPage(new Page<>(current, pageSize));
         PageListResponse result = new PageListResponse();
         result.setList(page.getRecords());
         result.setTotal(page.getTotal());
         return result;
     }
+
 }

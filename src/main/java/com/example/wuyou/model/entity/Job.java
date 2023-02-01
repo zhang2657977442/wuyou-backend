@@ -23,7 +23,7 @@ import java.util.Date;
 @Data
 @ApiModel(value = "公司职位信息",description = "")
 @TableName(autoResultMap = true)
-public class CompanyJob implements Serializable,Cloneable{
+public class Job implements Serializable,Cloneable{
     /** 主键 */
     @ApiModelProperty(name = "主键",notes = "")
     private String id ;

@@ -20,11 +20,12 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-mybatis:
-  mapper-locations: classpath:/mapper/*.xml
+mybatis-plus:
+  typeHandlersPackage: com.example.wuyou.handler
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 
 
 

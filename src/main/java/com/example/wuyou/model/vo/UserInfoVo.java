@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.example.wuyou.model.enums.UserRoleEnum;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
+@ApiModel(value = "用户信息VO",description = "")
 public class UserInfoVo implements Serializable {
     @ApiModelProperty(name = "主键",notes = "")
     private String  id ;

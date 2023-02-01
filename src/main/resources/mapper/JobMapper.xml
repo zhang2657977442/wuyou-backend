@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.wuyou.mapper.CompanyJobMapper">
-    <resultMap type="com.example.wuyou.model.entity.CompanyJob" id="CompanyJobMap">
+<mapper namespace="com.example.wuyou.mapper.JobMapper">
+    <resultMap type="com.example.wuyou.model.entity.Job" id="JobMap">
         <result property="id" column="id" jdbcType="CHAR"/>
         <result property="companyId" column="company_id" jdbcType="CHAR"/>
         <result property="postId" column="post_id" jdbcType="CHAR"/>

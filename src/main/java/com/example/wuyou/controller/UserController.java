@@ -18,7 +18,7 @@ import com.example.wuyou.common.ResultUtils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 用户信息;(user)表控制层
+ * 用户信息
  * @author : One Direction
  * @date : 2022-11-18
  */
