@@ -23,7 +23,7 @@ public class ResumeServiceImpl implements ResumeService {
     @Autowired
     private ResumeMapper resumeMapper;
 
-    public Resume getResumeInfo(String token){
+    public Resume getUserResume(String token){
         String id = JwtConfig.getTokenInfo(token).getClaim("id").asString();
         // 判断是否存在该简历
         QueryWrapper<Resume> queryWrapper = new QueryWrapper<>();
@@ -46,6 +46,16 @@ public class ResumeServiceImpl implements ResumeService {
         PageListResponse result = new PageListResponse();
         result.setList(page.getRecords());
         result.setTotal(page.getTotal());
+        return result;
+    }
+
+    public Resume getResumeInfo(String id){
+        QueryWrapper<Resume> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", id);
+        Resume result = resumeMapper.selectOne(queryWrapper);
+        if(result == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR, "暂无数据");
+        }
         return result;
     }
 }

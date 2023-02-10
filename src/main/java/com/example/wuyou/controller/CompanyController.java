@@ -3,16 +3,15 @@ package com.example.wuyou.controller;
 import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.PageRequest;
 import com.example.wuyou.common.ResultUtils;
+import com.example.wuyou.model.dto.GetCompanyJobRequest;
 import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.model.vo.CompanyInfoVo;
+import com.example.wuyou.model.vo.JobInfoVo;
 import com.example.wuyou.service.CompanyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -33,6 +32,23 @@ public class CompanyController {
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
         PageListResponse<CompanyInfoVo> result = CompanyService.getCompanyList(current, pageSize);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "获取公司职位")
+    @PostMapping("/getCompanyJob")
+    public BaseResponse<PageListResponse<JobInfoVo>> getCompanyJob(@RequestBody GetCompanyJobRequest params){
+        String id =  params.getId();
+        long current = params.getCurrent();
+        long pageSize = params.getPageSize();
+        PageListResponse<JobInfoVo> result = CompanyService.getCompanyJob(id,current, pageSize);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "获取公司信息")
+    @GetMapping("/getCompanyInfo/{id}")
+    public BaseResponse<CompanyInfoVo> getCompanyInfo(@PathVariable("id") String id){
+        CompanyInfoVo result = CompanyService.getCompanyInfo(id);
         return ResultUtils.success(result);
     }
 

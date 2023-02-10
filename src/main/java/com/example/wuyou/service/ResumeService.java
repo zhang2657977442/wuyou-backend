@@ -10,9 +10,11 @@ import com.example.wuyou.model.dto.PageListResponse;
  */
 public interface ResumeService{
 
-    Resume getResumeInfo(String token);
+    Resume getUserResume(String token);
 
     Boolean updateResume(Resume params);
 
     PageListResponse getResumeList(long current, long pageSize);
+
+    Resume getResumeInfo(String id);
 }

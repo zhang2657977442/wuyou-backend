@@ -24,11 +24,11 @@ public class ResumeController {
     @Autowired
     private ResumeService resumeService;
 
-    @ApiOperation(value = "获取简历信息")
-    @GetMapping("/getResumeInfo")
-    public BaseResponse<Resume> getResumeInfo(HttpServletRequest request) {
+    @ApiOperation(value = "获取用户简历")
+    @GetMapping("/getUserResume")
+    public BaseResponse<Resume> getUserResume(HttpServletRequest request) {
         String token = request.getHeader("token");// 从 http 请求头中取出 token
-        Resume result = resumeService.getResumeInfo(token);
+        Resume result = resumeService.getUserResume(token);
         return ResultUtils.success(result);
     }
 
@@ -45,6 +45,13 @@ public class ResumeController {
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
         PageListResponse<Resume> result = resumeService.getResumeList(current, pageSize);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "获取简历信息")
+    @GetMapping("/getResumeInfo/{id}")
+    public BaseResponse<Resume> getResumeInfo(@PathVariable("id") String id) {
+        Resume result = resumeService.getResumeInfo(id);
         return ResultUtils.success(result);
     }
 

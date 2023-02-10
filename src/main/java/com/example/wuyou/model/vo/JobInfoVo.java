@@ -45,6 +45,9 @@ public class JobInfoVo implements Serializable{
     @TableField(value = "update_time", fill = FieldFill.INSERT)
     @ApiModelProperty(name = "更新时间",notes = "")
     private Date updateTime ;
+    /** 公司ID */
+    @ApiModelProperty(name = "公司ID",notes = "")
+    private String companyId ;
     /** 公司名称 */
     @ApiModelProperty(name = "公司名称",notes = "")
     private String companyName ;

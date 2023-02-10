@@ -33,7 +33,7 @@ public class JwtConfig {
         HashMap<String, Object> header = new HashMap<>(2);
         header.put("typ", "JWT");
         header.put("alg", "HS256");
-        //附带username和userID生成签名
+        //附带openID和userID生成签名
         return JWT.create().withHeader(header).withClaim("openId",openId)
                 .withClaim("id",id).withExpiresAt(date).sign(algorithm);
     }
