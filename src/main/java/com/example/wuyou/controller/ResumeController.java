@@ -2,8 +2,10 @@ package com.example.wuyou.controller;
 
 import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.ResultUtils;
+import com.example.wuyou.model.dto.GetResumeListRequest;
 import com.example.wuyou.model.entity.Resume;
 import com.example.wuyou.model.dto.PageListResponse;
+import com.example.wuyou.model.vo.ResumeVo;
 import com.example.wuyou.service.ResumeService;
 import com.example.wuyou.common.PageRequest;
 import io.swagger.annotations.Api;
@@ -41,17 +43,18 @@ public class ResumeController {
 
     @ApiOperation(value = "获取简历列表")
     @PostMapping("/getResumeList")
-    public BaseResponse<PageListResponse<Resume>> getResumeList(@RequestBody PageRequest params){
+    public BaseResponse<PageListResponse<ResumeVo>> getResumeList(@RequestBody GetResumeListRequest params){
+        String keyword = params.getKeyword();
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
-        PageListResponse<Resume> result = resumeService.getResumeList(current, pageSize);
+        PageListResponse<ResumeVo> result = resumeService.getResumeList(current, pageSize, keyword);
         return ResultUtils.success(result);
     }
 
     @ApiOperation(value = "获取简历信息")
     @GetMapping("/getResumeInfo/{id}")
-    public BaseResponse<Resume> getResumeInfo(@PathVariable("id") String id) {
-        Resume result = resumeService.getResumeInfo(id);
+    public BaseResponse<ResumeVo> getResumeInfo(@PathVariable("id") String id) {
+        ResumeVo result = resumeService.getResumeInfo(id);
         return ResultUtils.success(result);
     }
 

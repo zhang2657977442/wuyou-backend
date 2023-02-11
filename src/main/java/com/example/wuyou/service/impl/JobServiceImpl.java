@@ -13,9 +13,9 @@ public class JobServiceImpl implements JobService {
     @Autowired
     private JobMapper jobMapper;
 
-    public PageListResponse getJobList(long current, long pageSize){
+    public PageListResponse getJobList(long current, long pageSize, String jobName){
         // 分页查询
-        Page<JobInfoVo> page = jobMapper.selectJobPage(new Page<>(current, pageSize));
+        Page<JobInfoVo> page = jobMapper.getJobList(new Page<>(current, pageSize), jobName);
         PageListResponse result = new PageListResponse();
         result.setList(page.getRecords());
         result.setTotal(page.getTotal());

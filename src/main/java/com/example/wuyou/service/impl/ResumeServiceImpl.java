@@ -8,6 +8,7 @@ import com.example.wuyou.exception.BusinessException;
 import com.example.wuyou.mapper.ResumeMapper;
 import com.example.wuyou.model.entity.Resume;
 import com.example.wuyou.model.dto.PageListResponse;
+import com.example.wuyou.model.vo.ResumeVo;
 import com.example.wuyou.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,19 +41,17 @@ public class ResumeServiceImpl implements ResumeService {
          return count > 0;
     }
 
-    public PageListResponse getResumeList(long current, long pageSize){
+    public PageListResponse getResumeList(long current, long pageSize, String keyword){
         // 分页查询
-        Page<Resume> page = resumeMapper.selectPage(new Page<>(current, pageSize), null);
+        Page<ResumeVo> page = resumeMapper.getResumeList(new Page<>(current, pageSize), keyword);
         PageListResponse result = new PageListResponse();
         result.setList(page.getRecords());
         result.setTotal(page.getTotal());
         return result;
     }
 
-    public Resume getResumeInfo(String id){
-        QueryWrapper<Resume> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("id", id);
-        Resume result = resumeMapper.selectOne(queryWrapper);
+    public ResumeVo getResumeInfo(String id){
+        ResumeVo result = resumeMapper.getResumeInfo(id);
         if(result == null) {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR, "暂无数据");
         }

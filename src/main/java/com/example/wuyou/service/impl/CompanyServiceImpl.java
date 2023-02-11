@@ -18,7 +18,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     public PageListResponse getCompanyList(long current, long pageSize){
         // 分页查询
-        Page<CompanyInfoVo> page = companyMapper.selectCompanyPage(new Page<>(current, pageSize));
+        Page<CompanyInfoVo> page = companyMapper.getCompanyList(new Page<>(current, pageSize));
         PageListResponse result = new PageListResponse();
         result.setList(page.getRecords());
         result.setTotal(page.getTotal());
@@ -27,7 +27,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     public PageListResponse getCompanyJob(String id, long current, long pageSize){
         // 分页查询
-        Page<JobInfoVo> page = companyMapper.selectCompanyJob(new Page<>(current, pageSize), id);
+        Page<JobInfoVo> page = companyMapper.getCompanyJob(new Page<>(current, pageSize), id);
         PageListResponse result = new PageListResponse();
         result.setList(page.getRecords());
         result.setTotal(page.getTotal());

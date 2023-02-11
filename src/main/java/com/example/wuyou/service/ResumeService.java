@@ -2,6 +2,7 @@ package com.example.wuyou.service;
 
 import com.example.wuyou.model.entity.Resume;
 import com.example.wuyou.model.dto.PageListResponse;
+import com.example.wuyou.model.vo.ResumeVo;
 
 /**
  * 个人简历信息;(person_resume)表服务接口
@@ -14,7 +15,7 @@ public interface ResumeService{
 
     Boolean updateResume(Resume params);
 
-    PageListResponse getResumeList(long current, long pageSize);
+    PageListResponse getResumeList(long current, long pageSize, String keyword);
 
-    Resume getResumeInfo(String id);
+    ResumeVo getResumeInfo(String id);
 }
