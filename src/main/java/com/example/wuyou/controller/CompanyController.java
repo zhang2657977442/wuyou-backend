@@ -24,14 +24,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/company")
 public class CompanyController {
     @Autowired
-    private CompanyService CompanyService;
+    private CompanyService companyService;
 
     @ApiOperation(value = "获取公司列表")
     @PostMapping("/getCompanyList")
     public BaseResponse<PageListResponse<CompanyInfoVo>> getCompanyList(@RequestBody PageRequest params){
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
-        PageListResponse<CompanyInfoVo> result = CompanyService.getCompanyList(current, pageSize);
+        PageListResponse<CompanyInfoVo> result = companyService.getCompanyList(current, pageSize);
         return ResultUtils.success(result);
     }
 
@@ -41,14 +41,14 @@ public class CompanyController {
         String id =  params.getId();
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
-        PageListResponse<JobInfoVo> result = CompanyService.getCompanyJob(id,current, pageSize);
+        PageListResponse<JobInfoVo> result = companyService.getCompanyJob(id,current, pageSize);
         return ResultUtils.success(result);
     }
 
     @ApiOperation(value = "获取公司信息")
     @GetMapping("/getCompanyInfo/{id}")
     public BaseResponse<CompanyInfoVo> getCompanyInfo(@PathVariable("id") String id){
-        CompanyInfoVo result = CompanyService.getCompanyInfo(id);
+        CompanyInfoVo result = companyService.getCompanyInfo(id);
         return ResultUtils.success(result);
     }
 
