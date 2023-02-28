@@ -2,7 +2,7 @@ package com.example.wuyou.controller;
 
 import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.ResultUtils;
-import com.example.wuyou.model.dto.AddApplyRequest;
+import com.example.wuyou.model.dto.*;
 import com.example.wuyou.model.enums.ApplyTypeEnum;
 import com.example.wuyou.service.ApplyService;
 import io.swagger.annotations.Api;
@@ -35,5 +35,37 @@ public class ApplyController {
         Boolean result = applyService.addApply(userId, jobId, type);
         return ResultUtils.success(result);
     }
+
+    @ApiOperation(value = "删除应聘信息")
+    @PostMapping("/deleteApply")
+    public BaseResponse<Boolean> deleteApply(@RequestBody DeleteApplyRequest params){
+        String userId =  params.getUserId();
+        String jobId = params.getJobId();
+        ApplyTypeEnum type = params.getType();
+        Boolean result = applyService.deleteApply(userId, jobId, type);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "是否应聘")
+    @PostMapping("/isApply")
+    public BaseResponse<Boolean> isApply(@RequestBody IsApplyRequest params){
+        String userId =  params.getUserId();
+        String jobId = params.getJobId();
+        ApplyTypeEnum type = params.getType();
+        Boolean result = applyService.isApply(userId, jobId, type);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "获取应聘信息")
+    @PostMapping("/getApplyList")
+    public <T> T getApplyList(@RequestBody GetApplyListRequest params){
+        String userId = params.getUserId();
+        ApplyTypeEnum type = params.getType();
+        long current = params.getCurrent();
+        long pageSize = params.getPageSize();
+        PageListResponse<T> result = applyService.getApplyList(current, pageSize, userId, type);
+        return (T) ResultUtils.success(result);
+    }
+
 
 }

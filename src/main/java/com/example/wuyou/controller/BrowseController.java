@@ -2,7 +2,7 @@ package com.example.wuyou.controller;
 
 import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.ResultUtils;
-import com.example.wuyou.model.dto.AddBrowseRequest;
+import com.example.wuyou.model.dto.*;
 import com.example.wuyou.model.enums.BrowseTypeEnum;
 import com.example.wuyou.service.BrowseService;
 import io.swagger.annotations.Api;
@@ -34,6 +34,17 @@ public class BrowseController {
         BrowseTypeEnum type = params.getType();
         Boolean result = browseService.addBrowse(userId, jobId, type);
         return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "获取浏览信息")
+    @PostMapping("/getBrowseList")
+    public <T> T getBrowseList(@RequestBody GetBrowseListRequest params){
+        String userId = params.getUserId();
+        BrowseTypeEnum type = params.getType();
+        long current = params.getCurrent();
+        long pageSize = params.getPageSize();
+        PageListResponse<T> result = browseService.getBrowseList(current, pageSize, userId, type);
+        return (T) ResultUtils.success(result);
     }
 }
 

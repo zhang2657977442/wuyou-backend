@@ -2,7 +2,7 @@ package com.example.wuyou.controller;
 
 import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.ResultUtils;
-import com.example.wuyou.model.dto.AddCollectRequest;
+import com.example.wuyou.model.dto.*;
 import com.example.wuyou.model.enums.CollectTypeEnum;
 import com.example.wuyou.service.CollectService;
 import io.swagger.annotations.Api;
@@ -34,6 +34,37 @@ public class CollectController {
         CollectTypeEnum type = params.getType();
         Boolean result = collectService.addCollect(userId, jobId, type);
         return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "删除收藏信息")
+    @PostMapping("/deleteCollect")
+    public BaseResponse<Boolean> deleteCollect(@RequestBody DeleteCollectRequest params){
+        String userId =  params.getUserId();
+        String jobId = params.getJobId();
+        CollectTypeEnum type = params.getType();
+        Boolean result = collectService.deleteCollect(userId, jobId, type);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "是否收藏")
+    @PostMapping("/isCollect")
+    public BaseResponse<Boolean> isCollect(@RequestBody IsCollectRequest params){
+        String userId =  params.getUserId();
+        String jobId = params.getJobId();
+        CollectTypeEnum type = params.getType();
+        Boolean result = collectService.isCollect(userId, jobId, type);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "获取收藏信息")
+    @PostMapping("/getCollectList")
+    public <T> T getCollectList(@RequestBody GetCollectListRequest params){
+        String userId = params.getUserId();
+        CollectTypeEnum type = params.getType();
+        long current = params.getCurrent();
+        long pageSize = params.getPageSize();
+        PageListResponse<T> result = collectService.getCollectList(current, pageSize, userId, type);
+        return (T) ResultUtils.success(result);
     }
 
 }

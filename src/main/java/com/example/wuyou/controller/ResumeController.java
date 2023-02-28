@@ -35,7 +35,7 @@ public class ResumeController {
     }
 
     @ApiOperation(value = "更新简历信息")
-    @PostMapping("/updateResume")
+    @PostMapping("/updateResumeInfo")
     public BaseResponse<Boolean> updateResume(@RequestBody Resume params){
         Boolean result = resumeService.updateResume(params);
         return ResultUtils.success(result);
