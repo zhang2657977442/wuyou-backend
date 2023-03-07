@@ -30,9 +30,9 @@ public class CollectController {
     @PostMapping("/addCollect")
     public BaseResponse<Boolean> addCollect(@RequestBody AddCollectRequest params){
         String userId =  params.getUserId();
-        String jobId = params.getJobId();
+        String dataId = params.getDataId();
         CollectTypeEnum type = params.getType();
-        Boolean result = collectService.addCollect(userId, jobId, type);
+        Boolean result = collectService.addCollect(userId, dataId, type);
         return ResultUtils.success(result);
     }
 
@@ -40,9 +40,9 @@ public class CollectController {
     @PostMapping("/deleteCollect")
     public BaseResponse<Boolean> deleteCollect(@RequestBody DeleteCollectRequest params){
         String userId =  params.getUserId();
-        String jobId = params.getJobId();
+        String dataId = params.getDataId();
         CollectTypeEnum type = params.getType();
-        Boolean result = collectService.deleteCollect(userId, jobId, type);
+        Boolean result = collectService.deleteCollect(userId, dataId, type);
         return ResultUtils.success(result);
     }
 
@@ -50,9 +50,9 @@ public class CollectController {
     @PostMapping("/isCollect")
     public BaseResponse<Boolean> isCollect(@RequestBody IsCollectRequest params){
         String userId =  params.getUserId();
-        String jobId = params.getJobId();
+        String dataId = params.getDataId();
         CollectTypeEnum type = params.getType();
-        Boolean result = collectService.isCollect(userId, jobId, type);
+        Boolean result = collectService.isCollect(userId, dataId, type);
         return ResultUtils.success(result);
     }
 

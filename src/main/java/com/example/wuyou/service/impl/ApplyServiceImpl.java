@@ -20,13 +20,13 @@ public class ApplyServiceImpl implements ApplyService {
     @Autowired
     private ApplyMapper applyMapper;
 
-    public Boolean addApply(String userId, String jobId, ApplyTypeEnum type){
+    public Boolean addApply(String userId, String dataId, ApplyTypeEnum type){
         Apply apply = new Apply();
         String id = new UuidUtils().getShortUuid();
         apply.setId(id);
         apply.setType(type);
         apply.setUserId(userId);
-        apply.setJobId(jobId);
+        apply.setDataId(dataId);
         int result = applyMapper.insert(apply);
         if(result > 0){
             return result > 0;
@@ -35,11 +35,11 @@ public class ApplyServiceImpl implements ApplyService {
         }
     }
 
-    public Boolean deleteApply(String userId, String jobId, ApplyTypeEnum type){
+    public Boolean deleteApply(String userId, String dataId, ApplyTypeEnum type){
         Apply apply = new Apply();
         apply.setType(type);
         apply.setUserId(userId);
-        apply.setJobId(jobId);
+        apply.setDataId(dataId);
         QueryWrapper<Apply> wrapper=new QueryWrapper<>(apply);
         int result = applyMapper.delete(wrapper);
         if(result > 0){
@@ -49,11 +49,11 @@ public class ApplyServiceImpl implements ApplyService {
         }
     }
 
-    public Boolean isApply(String userId, String jobId, ApplyTypeEnum type){
+    public Boolean isApply(String userId, String dataId, ApplyTypeEnum type){
         Apply apply = new Apply();
         apply.setType(type);
         apply.setUserId(userId);
-        apply.setJobId(jobId);
+        apply.setDataId(dataId);
         QueryWrapper<Apply> wrapper=new QueryWrapper<>(apply);
         Apply result = applyMapper.selectOne(wrapper);
         if(result == null){

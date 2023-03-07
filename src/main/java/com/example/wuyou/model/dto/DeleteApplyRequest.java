@@ -12,9 +12,9 @@ public class DeleteApplyRequest implements Serializable {
      */
     private String userId;
     /**
-     * 工作id
+     * 数据id
      */
-    private String jobId;
+    private String dataId;
     /**
      * 类型
      */

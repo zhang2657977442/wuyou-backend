@@ -37,7 +37,7 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     public Boolean updateResume(Resume params){
-         int count =  resumeMapper.updateById(params);
+         int count = resumeMapper.updateById(params);
          return count > 0;
     }
 

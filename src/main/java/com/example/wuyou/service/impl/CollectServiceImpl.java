@@ -20,13 +20,13 @@ public class CollectServiceImpl implements CollectService {
     @Autowired
     private CollectMapper collectMapper;
 
-    public Boolean addCollect(String userId, String jobId, CollectTypeEnum type){
+    public Boolean addCollect(String userId, String dataId, CollectTypeEnum type){
         Collect collect = new Collect();
         String id = new UuidUtils().getShortUuid();
         collect.setId(id);
         collect.setType(type);
         collect.setUserId(userId);
-        collect.setJobId(jobId);
+        collect.setDataId(dataId);
         int result = collectMapper.insert(collect);
         if(result > 0){
             return result > 0;
@@ -35,11 +35,11 @@ public class CollectServiceImpl implements CollectService {
         }
     }
 
-    public Boolean deleteCollect(String userId, String jobId, CollectTypeEnum type){
+    public Boolean deleteCollect(String userId, String dataId, CollectTypeEnum type){
         Collect collect = new Collect();
         collect.setType(type);
         collect.setUserId(userId);
-        collect.setJobId(jobId);
+        collect.setDataId(dataId);
         QueryWrapper<Collect> wrapper=new QueryWrapper<>(collect);
         int result = collectMapper.delete(wrapper);
         if(result > 0){
@@ -49,11 +49,11 @@ public class CollectServiceImpl implements CollectService {
         }
     }
 
-    public Boolean isCollect(String userId, String jobId, CollectTypeEnum type){
+    public Boolean isCollect(String userId, String dataId, CollectTypeEnum type){
         Collect collect = new Collect();
         collect.setType(type);
         collect.setUserId(userId);
-        collect.setJobId(jobId);
+        collect.setDataId(dataId);
         QueryWrapper<Collect> wrapper=new QueryWrapper<>(collect);
         Collect result = collectMapper.selectOne(wrapper);
         if(result == null){

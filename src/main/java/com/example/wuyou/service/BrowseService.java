@@ -5,7 +5,7 @@ import com.example.wuyou.model.enums.BrowseTypeEnum;
 
 public interface BrowseService {
 
-    Boolean addBrowse(String userId, String jobId, BrowseTypeEnum type);
+    Boolean addBrowse(String userId, String dataId, BrowseTypeEnum type);
 
     PageListResponse getBrowseList(long current, long pageSize, String userId, BrowseTypeEnum type);
 

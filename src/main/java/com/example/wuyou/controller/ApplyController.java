@@ -30,7 +30,7 @@ public class ApplyController {
     @PostMapping("/addApply")
     public BaseResponse<Boolean> addApply(@RequestBody AddApplyRequest params){
         String userId =  params.getUserId();
-        String jobId = params.getJobId();
+        String jobId = params.getDataId();
         ApplyTypeEnum type = params.getType();
         Boolean result = applyService.addApply(userId, jobId, type);
         return ResultUtils.success(result);
@@ -40,9 +40,9 @@ public class ApplyController {
     @PostMapping("/deleteApply")
     public BaseResponse<Boolean> deleteApply(@RequestBody DeleteApplyRequest params){
         String userId =  params.getUserId();
-        String jobId = params.getJobId();
+        String dataId = params.getDataId();
         ApplyTypeEnum type = params.getType();
-        Boolean result = applyService.deleteApply(userId, jobId, type);
+        Boolean result = applyService.deleteApply(userId, dataId, type);
         return ResultUtils.success(result);
     }
 
@@ -50,9 +50,9 @@ public class ApplyController {
     @PostMapping("/isApply")
     public BaseResponse<Boolean> isApply(@RequestBody IsApplyRequest params){
         String userId =  params.getUserId();
-        String jobId = params.getJobId();
+        String dataId = params.getDataId();
         ApplyTypeEnum type = params.getType();
-        Boolean result = applyService.isApply(userId, jobId, type);
+        Boolean result = applyService.isApply(userId, dataId, type);
         return ResultUtils.success(result);
     }
 

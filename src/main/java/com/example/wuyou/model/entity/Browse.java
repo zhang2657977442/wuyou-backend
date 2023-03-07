@@ -26,9 +26,9 @@ public class Browse implements Serializable,Cloneable{
     /** 用户ID */
     @ApiModelProperty(name = "用户ID",notes = "")
     private String userId ;
-    /** 工作ID */
-    @ApiModelProperty(name = "工作ID",notes = "")
-    private String jobId ;
+    /** 数据ID */
+    @ApiModelProperty(name = "数据ID",notes = "")
+    private String dataId ;
     /** 类型 */
     @ApiModelProperty(name = "类型",notes = "")
     private BrowseTypeEnum type ;

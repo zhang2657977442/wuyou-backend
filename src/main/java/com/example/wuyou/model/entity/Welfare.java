@@ -37,7 +37,7 @@ public class Welfare implements Serializable,Cloneable{
     @ApiModelProperty(name = "创建时间",notes = "")
     private Date createTime ;
     /** 更新时间 */
-    @TableField(value = "update_time", fill = FieldFill.INSERT, typeHandler = DateTypeHandler.class)
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE, typeHandler = DateTypeHandler.class)
     @ApiModelProperty(name = "更新时间",notes = "")
     private Date updateTime ;
 }

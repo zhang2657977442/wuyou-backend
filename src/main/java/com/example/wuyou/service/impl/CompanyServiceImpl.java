@@ -5,6 +5,7 @@ import com.example.wuyou.common.ErrorCode;
 import com.example.wuyou.exception.BusinessException;
 import com.example.wuyou.mapper.CompanyMapper;
 import com.example.wuyou.model.dto.PageListResponse;
+import com.example.wuyou.model.entity.Company;
 import com.example.wuyou.model.vo.CompanyInfoVo;
 import com.example.wuyou.model.vo.JobInfoVo;
 import com.example.wuyou.service.CompanyService;
@@ -41,5 +42,10 @@ public class CompanyServiceImpl implements CompanyService {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR, "暂无数据");
         }
         return result;
+    }
+
+    public Boolean updateCompanyInfo(Company params){
+        int count = companyMapper.updateById(params);
+        return count > 0;
     }
 }

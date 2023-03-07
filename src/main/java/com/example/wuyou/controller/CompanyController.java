@@ -5,6 +5,7 @@ import com.example.wuyou.common.PageRequest;
 import com.example.wuyou.common.ResultUtils;
 import com.example.wuyou.model.dto.GetCompanyJobRequest;
 import com.example.wuyou.model.dto.PageListResponse;
+import com.example.wuyou.model.entity.Company;
 import com.example.wuyou.model.vo.CompanyInfoVo;
 import com.example.wuyou.model.vo.JobInfoVo;
 import com.example.wuyou.service.CompanyService;
@@ -49,6 +50,13 @@ public class CompanyController {
     @GetMapping("/getCompanyInfo/{id}")
     public BaseResponse<CompanyInfoVo> getCompanyInfo(@PathVariable("id") String id){
         CompanyInfoVo result = companyService.getCompanyInfo(id);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "更新公司信息")
+    @PostMapping("/updateCompanyInfo")
+    public BaseResponse<Boolean> updateCompanyInfo(@RequestBody Company params){
+        Boolean result = companyService.updateCompanyInfo(params);
         return ResultUtils.success(result);
     }
 

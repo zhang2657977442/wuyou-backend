@@ -30,9 +30,9 @@ public class BrowseController {
     @PostMapping("/addBrowse")
     public BaseResponse<Boolean> addBrowse(@RequestBody AddBrowseRequest params){
         String userId =  params.getUserId();
-        String jobId = params.getJobId();
+        String dataId = params.getDataId();
         BrowseTypeEnum type = params.getType();
-        Boolean result = browseService.addBrowse(userId, jobId, type);
+        Boolean result = browseService.addBrowse(userId, dataId, type);
         return ResultUtils.success(result);
     }
 
