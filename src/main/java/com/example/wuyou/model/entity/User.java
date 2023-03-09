@@ -53,7 +53,7 @@ public class User implements Serializable,Cloneable{
     private Boolean enableStatus ;
     /** 认证id */
     @ApiModelProperty(name = "认证id",notes = "")
-    private String auth_id ;
+    private String authId ;
     /** 注册时间 */
     @TableField(value = "register_date", fill = FieldFill.INSERT, typeHandler = DateTypeHandler.class)
     @ApiModelProperty(name = "注册时间",notes = "")

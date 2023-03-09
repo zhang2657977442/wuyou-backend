@@ -18,4 +18,6 @@ public interface ResumeService{
     PageListResponse getResumeList(long current, long pageSize, String keyword);
 
     ResumeVo getResumeInfo(String id);
+
+    Boolean addResume(Resume params);
 }

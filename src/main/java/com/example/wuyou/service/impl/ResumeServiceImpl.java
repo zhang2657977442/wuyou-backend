@@ -10,6 +10,7 @@ import com.example.wuyou.model.entity.Resume;
 import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.model.vo.ResumeVo;
 import com.example.wuyou.service.ResumeService;
+import com.example.wuyou.utils.UuidUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +57,13 @@ public class ResumeServiceImpl implements ResumeService {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR, "暂无数据");
         }
         return result;
+    }
+
+    public Boolean addResume(Resume params){
+        // 生成uuid
+        String id = new UuidUtils().getShortUuid();
+        params.setId(id);
+        int count = resumeMapper.insert(params);
+        return count > 0;
     }
 }

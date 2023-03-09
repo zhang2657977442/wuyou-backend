@@ -14,6 +14,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * 公司信息;
@@ -57,6 +59,14 @@ public class CompanyController {
     @PostMapping("/updateCompanyInfo")
     public BaseResponse<Boolean> updateCompanyInfo(@RequestBody Company params){
         Boolean result = companyService.updateCompanyInfo(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "新增公司信息")
+    @PostMapping("/addCompany")
+    public BaseResponse<Boolean> addCompany(@RequestBody Company params, HttpServletRequest request){
+        String token = request.getHeader("token");
+        Boolean result = companyService.addCompany(params,token);
         return ResultUtils.success(result);
     }
 

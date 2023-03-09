@@ -13,4 +13,6 @@ public interface CompanyService {
     CompanyInfoVo getCompanyInfo(String id);
 
     Boolean updateCompanyInfo(Company params);
+
+    Boolean addCompany(Company params,String token);
 }

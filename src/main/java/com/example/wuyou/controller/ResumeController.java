@@ -58,4 +58,11 @@ public class ResumeController {
         return ResultUtils.success(result);
     }
 
+    @ApiOperation(value = "新增简历信息")
+    @PostMapping("/addResume")
+    public BaseResponse<Boolean> addResume(@RequestBody Resume params){
+        Boolean result = resumeService.addResume(params);
+        return ResultUtils.success(result);
+    }
+
 }
