@@ -69,9 +69,15 @@ public class JobInfoVo implements Serializable{
     /** 行业名称 */
     @ApiModelProperty(name = "行业名称",notes = "")
     private String industryName ;
+    /** 用户ID */
+    @ApiModelProperty(name = "用户ID",notes = "")
+    private String userId ;
+    /** 电话号码 */
+    @ApiModelProperty(name = "电话号码", notes = "")
+    private String mobile;
     /** 用户名称 */
     @ApiModelProperty(name = "用户名称",notes = "")
-    private String userName ;
+    private String username ;
     /** 用户头像 */
     @ApiModelProperty(name = "用户头像",notes = "")
     private String userAvatar ;

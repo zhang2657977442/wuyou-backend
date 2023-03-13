@@ -57,6 +57,9 @@ public class ResumeVo implements Serializable,Cloneable {
     @TableField(value = "create_time", fill = FieldFill.INSERT, typeHandler = DateTypeHandler.class)
     @ApiModelProperty(name = "创建时间", notes = "")
     private Date createTime;
+    /** 用户ID */
+    @ApiModelProperty(name = "用户ID",notes = "")
+    private String userId ;
     /** 用户名 */
     @ApiModelProperty(name = "用户名", notes = "")
     private String username;

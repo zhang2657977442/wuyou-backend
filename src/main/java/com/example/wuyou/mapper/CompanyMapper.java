@@ -14,7 +14,7 @@ public interface CompanyMapper extends BaseMapper<Company> {
             "where c.industry_id = i.id")
     Page<CompanyInfoVo> getCompanyList(Page<CompanyInfoVo> page);
 
-    @Select("SELECT j.id,j.company_id,j.enable_status,j.exp_require,j.min_education,j.salary,j.job_type,j.skill,j.create_time,j.update_time,p.name post_name,c.name company_name,c.nature,c.staff_size,c.address,pp.name post_category,i.name industry_name,u.username user_name,u.avatar user_avatar from job j,position p,company c,position pp,industry i,user u " +
+    @Select("SELECT j.id,j.company_id,j.enable_status,j.exp_require,j.min_education,j.salary,j.job_type,j.skill,j.create_time,j.update_time,p.name post_name,c.name company_name,c.nature,c.staff_size,c.address,pp.name post_category,i.name industry_name,u.id user_id,u.username,u.mobile,u.avatar user_avatar from job j,position p,company c,position pp,industry i,user u " +
             "where j.company_id = #{id} and j.post_id = p.id and j.company_id = c.id and p.p_id = pp.id and c.industry_id = i.id and u.company_id = c.id")
     Page<JobInfoVo> getCompanyJob(Page<JobInfoVo> page, @Param("id") String id);
 
