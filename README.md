@@ -18,12 +18,13 @@
 
 ![](https://raw.githubusercontent.com/zhang2657977442/MyPicGo/master/wuyou-backend/%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE.png)
 + 执行MainApplication启动类
-+ 访问http://localhost:8080/api/swagger-ui.html，出现swagger接口文档表示启动成功
++ 访问http://localhost:8080/api/swagger-ui.html    出现swagger接口文档表示启动成功
 
 ![](https://raw.githubusercontent.com/zhang2657977442/MyPicGo/master/wuyou-backend/%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F.png)
 
 ## 开源不易 谢谢支持
 ![](https://raw.githubusercontent.com/zhang2657977442/MyPicGo/master/other/%E8%B5%9E%E8%B5%8F%E7%A0%81.jpg)
+
 如有问题请联系
 + QQ：2657977449
 + 微信：zhang2657977449
