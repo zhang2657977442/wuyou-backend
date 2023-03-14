@@ -11,10 +11,10 @@
 ## 运行步骤
 + 在mysql中创建名为wuyou_recruit的库
 + 执行项目中的run.sql文件进行表的创建和数据导入
-+ 修改constant/WXConfigConstant文件的APP_ID和密钥
++ 修改constant/WXConfigConstant文件中的APP_ID和密钥
 
 ![](https://raw.githubusercontent.com/zhang2657977442/MyPicGo/master/wuyou-backend/%E4%BF%AE%E5%A4%8Dwx%E9%85%8D%E7%BD%AE.png)
-+ 修改application.yaml中的数据库配置
++ 修改application.yaml文件中的数据库配置
 
 ![](https://raw.githubusercontent.com/zhang2657977442/MyPicGo/master/wuyou-backend/%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE.png)
 + 执行MainApplication启动类

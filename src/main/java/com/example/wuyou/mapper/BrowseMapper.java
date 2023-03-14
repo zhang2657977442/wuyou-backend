@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
 
 public interface BrowseMapper extends BaseMapper<Browse>{
 
-    @Select("SELECT c.id,c.name,c.full_name,c.logo,c.nature,c.staff_size,c.introduce,c.address,c.city_id,c.auth_id,c.work_time,c.rest_time,c.work_overtime,c.enable_status,c.create_time,c.update_time,i.name industry_name from browse b, company c,industry i " +
+    @Select("SELECT c.id,c.name,c.full_name,c.logo,c.nature,c.staff_size,c.introduce,c.address,c.auth_id,c.work_time,c.rest_time,c.work_overtime,c.enable_status,c.create_time,c.update_time,i.name industry_name from browse b, company c,industry i " +
             "where b.user_id = #{user_id} and b.type = #{type} and b.data_id = c.id and c.industry_id = i.id")
     Page<CompanyInfoVo> getLLGWList(Page<CompanyInfoVo> page, @Param("user_id") String userId, @Param("type") BrowseTypeEnum type);
 
