@@ -1,179 +1,179 @@
 DROP TABLE IF EXISTS `industry`;
 CREATE TABLE `industry`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    name VARCHAR(50) NOT NULL   COMMENT '名称' ,
-    icon VARCHAR(255)    COMMENT '图标地址' ,
-    p_id CHAR(8)    COMMENT '父级id' ,
-    enable_status BOOLEAN NOT NULL  DEFAULT true COMMENT '启用状态' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    update_time DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `name` VARCHAR(50) NOT NULL   COMMENT '名称' ,
+    `icon` VARCHAR(255)    COMMENT '图标地址' ,
+    `p_id` CHAR(8)    COMMENT '父级id' ,
+    `enable_status` BOOLEAN NOT NULL  DEFAULT true COMMENT '启用状态' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    `update_time` DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '行业信息';
 
 DROP TABLE IF EXISTS `position`;
 CREATE TABLE `position`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    name VARCHAR(50) NOT NULL   COMMENT '名称' ,
-    icon VARCHAR(255)    COMMENT '图标地址' ,
-    p_id CHAR(8)    COMMENT '父级id' ,
-    enable_status BOOLEAN NOT NULL  DEFAULT true COMMENT '启用状态' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    update_time DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `name` VARCHAR(50) NOT NULL   COMMENT '名称' ,
+    `icon` VARCHAR(255)    COMMENT '图标地址' ,
+    `p_id` CHAR(8)    COMMENT '父级id' ,
+    `enable_status` BOOLEAN NOT NULL  DEFAULT true COMMENT '启用状态' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    `update_time` DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '职位信息';
 
 DROP TABLE IF EXISTS `welfare`;
 CREATE TABLE `welfare`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    name VARCHAR(50) NOT NULL   COMMENT '名称' ,
-    icon VARCHAR(255)    COMMENT '图标地址' ,
-    enable_status BOOLEAN NOT NULL  DEFAULT true COMMENT '启用状态' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    update_time DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `name` VARCHAR(50) NOT NULL   COMMENT '名称' ,
+    `icon` VARCHAR(255)    COMMENT '图标地址' ,
+    `enable_status` BOOLEAN NOT NULL  DEFAULT true COMMENT '启用状态' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    `update_time` DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '福利信息';
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    open_id VARCHAR(255)    COMMENT '微信用户id' ,
-    username VARCHAR(50) NOT NULL   COMMENT '用户名' ,
-    password VARCHAR(255)    COMMENT '密码' ,
-    mobile CHAR(11)    COMMENT '手机号码' ,
-    avatar VARCHAR(255) NOT NULL  DEFAULT 'https://pan.whiteones.cn/d/PicGo/wuyou/avatar_def.jpg' COMMENT '头像地址' ,
-    role SMALLINT(1) NOT NULL  DEFAULT false COMMENT '用户角色' ,
-    company_id CHAR(8)    COMMENT '公司id' ,
-    enable_status BOOLEAN NOT NULL  DEFAULT true COMMENT '账号状态' ,
-    auth_id CHAR(8)    COMMENT '认证id' ,
-    register_date DOUBLE(13,3) NOT NULL   COMMENT '注册时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `open_id` VARCHAR(255)    COMMENT '微信用户id' ,
+    `username` VARCHAR(50) NOT NULL   COMMENT '用户名' ,
+    `password` VARCHAR(255)    COMMENT '密码' ,
+    `mobile` CHAR(11)    COMMENT '手机号码' ,
+    `avatar` VARCHAR(255) NOT NULL  DEFAULT 'https://pan.whiteones.cn/d/PicGo/wuyou/avatar_def.jpg' COMMENT '头像地址' ,
+    `role` SMALLINT(1) NOT NULL  DEFAULT false COMMENT '用户角色' ,
+    `company_id` CHAR(8)    COMMENT '公司id' ,
+    `enable_status` BOOLEAN NOT NULL  DEFAULT true COMMENT '账号状态' ,
+    `auth_id` CHAR(8)    COMMENT '认证id' ,
+    `register_date` DOUBLE(13,3) NOT NULL   COMMENT '注册时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '用户信息';
 
 DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    name VARCHAR(50) NOT NULL   COMMENT '简称' ,
-    full_name VARCHAR(50) NOT NULL   COMMENT '全称' ,
-    logo VARCHAR(255) NOT NULL  DEFAULT 'https://pan.whiteones.cn/d/PicGo/wuyou/company_icon.png' COMMENT 'logo地址' ,
-    industry_id CHAR(8) NOT NULL   COMMENT '行业id' ,
-    nature SMALLINT(1) NOT NULL   COMMENT '公司性质' ,
-    staff_size VARCHAR(255) NOT NULL   COMMENT '公司规模' ,
-    introduce VARCHAR(500) NOT NULL   COMMENT '公司简介' ,
-    address VARCHAR(255) NOT NULL   COMMENT '地址详情' ,
-    auth_id CHAR(8)    COMMENT '认证id' ,
-    work_time VARCHAR(255) NOT NULL   COMMENT '工作时间' ,
-    rest_time VARCHAR(255) NOT NULL   COMMENT '休息时间' ,
-    work_overtime VARCHAR(255) NOT NULL   COMMENT '加班情况' ,
-    enable_status BOOLEAN NOT NULL  DEFAULT false COMMENT '生效状态' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    update_time DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `name` VARCHAR(50) NOT NULL   COMMENT '简称' ,
+    `full_name` VARCHAR(50) NOT NULL   COMMENT '全称' ,
+    `logo` VARCHAR(255) NOT NULL  DEFAULT 'https://pan.whiteones.cn/d/PicGo/wuyou/company_icon.png' COMMENT 'logo地址' ,
+    `industry_id` CHAR(8) NOT NULL   COMMENT '行业id' ,
+    `nature` SMALLINT(1) NOT NULL   COMMENT '公司性质' ,
+    `staff_size` VARCHAR(255) NOT NULL   COMMENT '公司规模' ,
+    `introduce` VARCHAR(500) NOT NULL   COMMENT '公司简介' ,
+    `address` VARCHAR(255) NOT NULL   COMMENT '地址详情' ,
+    `auth_id` CHAR(8)    COMMENT '认证id' ,
+    `work_time` VARCHAR(255) NOT NULL   COMMENT '工作时间' ,
+    `rest_time` VARCHAR(255) NOT NULL   COMMENT '休息时间' ,
+    `work_overtime` VARCHAR(255) NOT NULL   COMMENT '加班情况' ,
+    `enable_status` BOOLEAN NOT NULL  DEFAULT false COMMENT '生效状态' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    `update_time` DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '公司信息';
 
 DROP TABLE IF EXISTS `job`;
 CREATE TABLE `job`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    company_id CHAR(8) NOT NULL   COMMENT '公司id' ,
-    post_id CHAR(8) NOT NULL   COMMENT '职位id' ,
-    enable_status BOOLEAN NOT NULL  DEFAULT false COMMENT '生效状态' ,
-    exp_require SMALLINT(1) NOT NULL   COMMENT '经验要求' ,
-    min_education SMALLINT(1)    COMMENT '最低学历' ,
-    salary SMALLINT(1) NOT NULL   COMMENT '薪资范围' ,
-    job_type SMALLINT(1) NOT NULL   COMMENT '工作类型' ,
-    skill VARCHAR(500) NOT NULL   COMMENT '技能要求' ,
-    create_time DOUBLE NOT NULL   COMMENT '创建时间' ,
-    update_time DOUBLE NOT NULL   COMMENT '更新时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `company_id` CHAR(8) NOT NULL   COMMENT '公司id' ,
+    `post_id` CHAR(8) NOT NULL   COMMENT '职位id' ,
+    `enable_status` BOOLEAN NOT NULL  DEFAULT false COMMENT '生效状态' ,
+    `exp_require` SMALLINT(1) NOT NULL   COMMENT '经验要求' ,
+    `min_education` SMALLINT(1)    COMMENT '最低学历' ,
+    `salary` SMALLINT(1) NOT NULL   COMMENT '薪资范围' ,
+    `job_type` SMALLINT(1) NOT NULL   COMMENT '工作类型' ,
+    `skill` VARCHAR(500) NOT NULL   COMMENT '技能要求' ,
+    `create_time` DOUBLE NOT NULL   COMMENT '创建时间' ,
+    `update_time` DOUBLE NOT NULL   COMMENT '更新时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '工作招聘信息';
 
 DROP TABLE IF EXISTS `company_welfare`;
 CREATE TABLE `company_welfare`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    company_id CHAR(8) NOT NULL   COMMENT '公司id' ,
-    welfare_id CHAR(8) NOT NULL   COMMENT '福利id' ,
-    enable_status BOOLEAN NOT NULL  DEFAULT true COMMENT '生效状态' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    update_time DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `company_id` CHAR(8) NOT NULL   COMMENT '公司id' ,
+    `welfare_id` CHAR(8) NOT NULL   COMMENT '福利id' ,
+    `enable_status` BOOLEAN NOT NULL  DEFAULT true COMMENT '生效状态' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    `update_time` DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '公司福利信息';
 
 DROP TABLE IF EXISTS `user_auth`;
 CREATE TABLE `user_auth`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    identity CHAR(18) NOT NULL   COMMENT '身份证号码' ,
-    auth_status SMALLINT(1) NOT NULL  DEFAULT 1 COMMENT '认证状态' ,
-    failure_reason VARCHAR(255)    COMMENT '失败原因' ,
-    submit_time DOUBLE(13,3) NOT NULL   COMMENT '提交时间' ,
-    finished_time DOUBLE(13,3) NOT NULL   COMMENT '审核时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `identity` CHAR(18) NOT NULL   COMMENT '身份证号码' ,
+    `auth_status` SMALLINT(1) NOT NULL  DEFAULT 1 COMMENT '认证状态' ,
+    `failure_reason` VARCHAR(255)    COMMENT '失败原因' ,
+    `submit_time` DOUBLE(13,3) NOT NULL   COMMENT '提交时间' ,
+    `finished_time` DOUBLE(13,3) NOT NULL   COMMENT '审核时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '实名认证信息';
 
 DROP TABLE IF EXISTS `company_auth`;
 CREATE TABLE `company_auth`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    legal_person VARCHAR(50) NOT NULL   COMMENT '法人姓名' ,
-    credit_code CHAR(18) NOT NULL   COMMENT '统一社会信用代码' ,
-    auth_status SMALLINT(1) NOT NULL  DEFAULT 1 COMMENT '认证状态' ,
-    failure_reason VARCHAR(255)    COMMENT '失败原因' ,
-    submit_time DOUBLE(13,3) NOT NULL   COMMENT '提交时间' ,
-    finished_time DOUBLE(13,3) NOT NULL   COMMENT '审核时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `legal_person` VARCHAR(50) NOT NULL   COMMENT '法人姓名' ,
+    `credit_code` CHAR(18) NOT NULL   COMMENT '统一社会信用代码' ,
+    `auth_status` SMALLINT(1) NOT NULL  DEFAULT 1 COMMENT '认证状态' ,
+    `failure_reason` VARCHAR(255)    COMMENT '失败原因' ,
+    `submit_time` DOUBLE(13,3) NOT NULL   COMMENT '提交时间' ,
+    `finished_time` DOUBLE(13,3) NOT NULL   COMMENT '审核时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '企业认证信息';
 
 DROP TABLE IF EXISTS `resume`;
 CREATE TABLE `resume`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    user_id CHAR(8) NOT NULL   COMMENT '用户id' ,
-    birthday VARCHAR(255)    COMMENT '出生日期' ,
-    name VARCHAR(50) NOT NULL   COMMENT '姓名' ,
-    gender SMALLINT(1) NOT NULL   COMMENT '性别' ,
-    education SMALLINT(1)    COMMENT '最高学历' ,
-    experience SMALLINT(1)    COMMENT '工作经验' ,
-    skill VARCHAR(500)    COMMENT '个人特长' ,
-    job_status SMALLINT(1)    COMMENT '求职状态' ,
-    salary SMALLINT(1)    COMMENT '期望薪资' ,
-    post_id CHAR(8)    COMMENT '期望职位' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `user_id` CHAR(8) NOT NULL   COMMENT '用户id' ,
+    `birthday` VARCHAR(255)    COMMENT '出生日期' ,
+    `name` VARCHAR(50) NOT NULL   COMMENT '姓名' ,
+    `gender` SMALLINT(1) NOT NULL   COMMENT '性别' ,
+    `education` SMALLINT(1)    COMMENT '最高学历' ,
+    `experience` SMALLINT(1)    COMMENT '工作经验' ,
+    `skill` VARCHAR(500)    COMMENT '个人特长' ,
+    `job_status` SMALLINT(1)    COMMENT '求职状态' ,
+    `salary` SMALLINT(1)    COMMENT '期望薪资' ,
+    `post_id` CHAR(8)    COMMENT '期望职位' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '简历信息';
 
 DROP TABLE IF EXISTS `apply`;
 CREATE TABLE `apply`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    user_id CHAR(8) NOT NULL   COMMENT '用户id' ,
-    data_id CHAR(8) NOT NULL   COMMENT '数据id' ,
-    type SMALLINT(1) NOT NULL   COMMENT '应聘类型' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `user_id` CHAR(8) NOT NULL   COMMENT '用户id' ,
+    `data_id` CHAR(8) NOT NULL   COMMENT '数据id' ,
+    `type` SMALLINT(1) NOT NULL   COMMENT '应聘类型' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '应聘信息';
 
 DROP TABLE IF EXISTS `browse`;
 CREATE TABLE `browse`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    user_id CHAR(8) NOT NULL   COMMENT '用户id' ,
-    data_id CHAR(8) NOT NULL   COMMENT '数据id' ,
-    type SMALLINT(1) NOT NULL   COMMENT '浏览类型' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `user_id` CHAR(8) NOT NULL   COMMENT '用户id' ,
+    `data_id` CHAR(8) NOT NULL   COMMENT '数据id' ,
+    `type` SMALLINT(1) NOT NULL   COMMENT '浏览类型' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '浏览信息';
 
 DROP TABLE IF EXISTS `collect`;
 CREATE TABLE `collect`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    user_id CHAR(8) NOT NULL   COMMENT '用户id' ,
-    data_id CHAR(8) NOT NULL   COMMENT '数据id' ,
-    type SMALLINT(1) NOT NULL   COMMENT '收藏类型' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `user_id` CHAR(8) NOT NULL   COMMENT '用户id' ,
+    `data_id` CHAR(8) NOT NULL   COMMENT '数据id' ,
+    `type` SMALLINT(1) NOT NULL   COMMENT '收藏类型' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '收藏信息';
 
 DROP TABLE IF EXISTS `cms`;
 CREATE TABLE `cms`(
-    id CHAR(8) NOT NULL   COMMENT '主键' ,
-    text VARCHAR(1000) NOT NULL   COMMENT '内容' ,
-    type SMALLINT(1) NOT NULL   COMMENT '内容类型' ,
-    create_time DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
-    PRIMARY KEY (id)
+    `id` CHAR(8) NOT NULL   COMMENT '主键' ,
+    `text` VARCHAR(1000) NOT NULL   COMMENT '内容' ,
+    `type` SMALLINT(1) NOT NULL   COMMENT '内容类型' ,
+    `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
+    PRIMARY KEY (`id`)
 )  COMMENT = '系统内容信息';
 
 INSERT INTO `position`(`id`, `name`, `icon`, `p_id`, `enable_status`, `create_time`, `update_time`) VALUES ('0031a478', '互联网产品经理', NULL, '843c32b8', 1, 1648112091.084, 1648112091.084);
