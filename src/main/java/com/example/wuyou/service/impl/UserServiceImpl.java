@@ -5,6 +5,7 @@ import static com.example.wuyou.constant.WXConfigConstant.APP_ID;
 import static com.example.wuyou.constant.WXConfigConstant.SECRET;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.wuyou.model.dto.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +34,11 @@ public class UserServiceImpl implements UserService{
     private UserMapper userMapper;
 
     /**
-     *
-     * @return
+     * 盐值，混淆密码
      */
+    private static final String SALT = "one";
+
+
     public User getUserInfo(String token){
         String id = JwtConfig.getTokenInfo(token).getClaim("id").asString();
         return userMapper.selectById(id);
@@ -103,6 +106,24 @@ public class UserServiceImpl implements UserService{
         }else{
             throw new BusinessException(ErrorCode.OPERATION_ERROR);
         }
+    }
+
+
+    public LoginResponse login(String username, String password){
+        // 查询用户是否存在
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username", username);
+        queryWrapper.eq("password", password);
+        User user = userMapper.selectOne(queryWrapper);
+        // 用户不存在
+        if (user == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户不存在或密码错误");
+        }
+        String id = user.getId();
+        String token = JwtConfig.sign("",id);
+        LoginResponse result = new LoginResponse();
+        result.setToken(token);
+        return result;
     }
 
 

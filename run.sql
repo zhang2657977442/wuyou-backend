@@ -10,8 +10,8 @@ CREATE TABLE industry(
     PRIMARY KEY (id)
 )  COMMENT = '行业信息';
 
-DROP TABLE IF EXISTS position;
-CREATE TABLE position(
+DROP TABLE IF EXISTS `position`;
+CREATE TABLE `position`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     name VARCHAR(50) NOT NULL   COMMENT '名称' ,
     icon VARCHAR(255)    COMMENT '图标地址' ,

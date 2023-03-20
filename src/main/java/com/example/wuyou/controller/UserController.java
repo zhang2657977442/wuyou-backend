@@ -1,5 +1,6 @@
 package com.example.wuyou.controller;
 
+import com.example.wuyou.model.dto.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.BeanUtils;
 import com.example.wuyou.service.UserService;
 import com.example.wuyou.model.vo.UserInfoVo;
-import com.example.wuyou.model.dto.SwitchRoleRequest;
-import com.example.wuyou.model.dto.GetOpenIdResponse;
-import com.example.wuyou.model.dto.WxUserLoginRequest;
-import com.example.wuyou.model.dto.WxUserLoginResponse;
 import com.example.wuyou.model.entity.User;
 import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.ResultUtils;
@@ -66,6 +63,15 @@ public class UserController{
         return ResultUtils.success(result);
     }
 
+
+    @ApiOperation(value = "账号密码登录")
+    @PostMapping("/login")
+    public BaseResponse<LoginResponse> login(@RequestBody LoginRequest LoginRequest){
+        String username = LoginRequest.getUsername();
+        String password = LoginRequest.getPassword();
+        LoginResponse result = userService.login(username,password);
+        return ResultUtils.success(result);
+    }
 
 
 }
