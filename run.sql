@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS industry;
-CREATE TABLE industry(
+DROP TABLE IF EXISTS `industry`;
+CREATE TABLE `industry`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     name VARCHAR(50) NOT NULL   COMMENT '名称' ,
     icon VARCHAR(255)    COMMENT '图标地址' ,
@@ -22,8 +22,8 @@ CREATE TABLE `position`(
     PRIMARY KEY (id)
 )  COMMENT = '职位信息';
 
-DROP TABLE IF EXISTS welfare;
-CREATE TABLE welfare(
+DROP TABLE IF EXISTS `welfare`;
+CREATE TABLE `welfare`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     name VARCHAR(50) NOT NULL   COMMENT '名称' ,
     icon VARCHAR(255)    COMMENT '图标地址' ,
@@ -33,8 +33,8 @@ CREATE TABLE welfare(
     PRIMARY KEY (id)
 )  COMMENT = '福利信息';
 
-DROP TABLE IF EXISTS user;
-CREATE TABLE user(
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     open_id VARCHAR(255)    COMMENT '微信用户id' ,
     username VARCHAR(50) NOT NULL   COMMENT '用户名' ,
@@ -49,8 +49,8 @@ CREATE TABLE user(
     PRIMARY KEY (id)
 )  COMMENT = '用户信息';
 
-DROP TABLE IF EXISTS company;
-CREATE TABLE company(
+DROP TABLE IF EXISTS `company`;
+CREATE TABLE `company`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     name VARCHAR(50) NOT NULL   COMMENT '简称' ,
     full_name VARCHAR(50) NOT NULL   COMMENT '全称' ,
@@ -70,8 +70,8 @@ CREATE TABLE company(
     PRIMARY KEY (id)
 )  COMMENT = '公司信息';
 
-DROP TABLE IF EXISTS job;
-CREATE TABLE job(
+DROP TABLE IF EXISTS `job`;
+CREATE TABLE `job`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     company_id CHAR(8) NOT NULL   COMMENT '公司id' ,
     post_id CHAR(8) NOT NULL   COMMENT '职位id' ,
@@ -86,8 +86,8 @@ CREATE TABLE job(
     PRIMARY KEY (id)
 )  COMMENT = '工作招聘信息';
 
-DROP TABLE IF EXISTS company_welfare;
-CREATE TABLE company_welfare(
+DROP TABLE IF EXISTS `company_welfare`;
+CREATE TABLE `company_welfare`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     company_id CHAR(8) NOT NULL   COMMENT '公司id' ,
     welfare_id CHAR(8) NOT NULL   COMMENT '福利id' ,
@@ -97,8 +97,8 @@ CREATE TABLE company_welfare(
     PRIMARY KEY (id)
 )  COMMENT = '公司福利信息';
 
-DROP TABLE IF EXISTS user_auth;
-CREATE TABLE user_auth(
+DROP TABLE IF EXISTS `user_auth`;
+CREATE TABLE `user_auth`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     identity CHAR(18) NOT NULL   COMMENT '身份证号码' ,
     auth_status SMALLINT(1) NOT NULL  DEFAULT 1 COMMENT '认证状态' ,
@@ -108,8 +108,8 @@ CREATE TABLE user_auth(
     PRIMARY KEY (id)
 )  COMMENT = '实名认证信息';
 
-DROP TABLE IF EXISTS company_auth;
-CREATE TABLE company_auth(
+DROP TABLE IF EXISTS `company_auth`;
+CREATE TABLE `company_auth`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     legal_person VARCHAR(50) NOT NULL   COMMENT '法人姓名' ,
     credit_code CHAR(18) NOT NULL   COMMENT '统一社会信用代码' ,
@@ -120,8 +120,8 @@ CREATE TABLE company_auth(
     PRIMARY KEY (id)
 )  COMMENT = '企业认证信息';
 
-DROP TABLE IF EXISTS resume;
-CREATE TABLE resume(
+DROP TABLE IF EXISTS `resume`;
+CREATE TABLE `resume`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     user_id CHAR(8) NOT NULL   COMMENT '用户id' ,
     birthday VARCHAR(255)    COMMENT '出生日期' ,
@@ -137,8 +137,8 @@ CREATE TABLE resume(
     PRIMARY KEY (id)
 )  COMMENT = '简历信息';
 
-DROP TABLE IF EXISTS apply;
-CREATE TABLE apply(
+DROP TABLE IF EXISTS `apply`;
+CREATE TABLE `apply`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     user_id CHAR(8) NOT NULL   COMMENT '用户id' ,
     data_id CHAR(8) NOT NULL   COMMENT '数据id' ,
@@ -147,8 +147,8 @@ CREATE TABLE apply(
     PRIMARY KEY (id)
 )  COMMENT = '应聘信息';
 
-DROP TABLE IF EXISTS browse;
-CREATE TABLE browse(
+DROP TABLE IF EXISTS `browse`;
+CREATE TABLE `browse`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     user_id CHAR(8) NOT NULL   COMMENT '用户id' ,
     data_id CHAR(8) NOT NULL   COMMENT '数据id' ,
@@ -157,8 +157,8 @@ CREATE TABLE browse(
     PRIMARY KEY (id)
 )  COMMENT = '浏览信息';
 
-DROP TABLE IF EXISTS collect;
-CREATE TABLE collect(
+DROP TABLE IF EXISTS `collect`;
+CREATE TABLE `collect`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     user_id CHAR(8) NOT NULL   COMMENT '用户id' ,
     data_id CHAR(8) NOT NULL   COMMENT '数据id' ,
@@ -167,8 +167,8 @@ CREATE TABLE collect(
     PRIMARY KEY (id)
 )  COMMENT = '收藏信息';
 
-DROP TABLE IF EXISTS cms;
-CREATE TABLE cms(
+DROP TABLE IF EXISTS `cms`;
+CREATE TABLE `cms`(
     id CHAR(8) NOT NULL   COMMENT '主键' ,
     text VARCHAR(1000) NOT NULL   COMMENT '内容' ,
     type SMALLINT(1) NOT NULL   COMMENT '内容类型' ,
