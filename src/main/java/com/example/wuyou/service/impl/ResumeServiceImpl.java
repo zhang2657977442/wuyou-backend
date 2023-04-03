@@ -8,6 +8,7 @@ import com.example.wuyou.exception.BusinessException;
 import com.example.wuyou.mapper.ResumeMapper;
 import com.example.wuyou.model.entity.Resume;
 import com.example.wuyou.model.dto.PageListResponse;
+import com.example.wuyou.model.entity.Welfare;
 import com.example.wuyou.model.vo.ResumeVo;
 import com.example.wuyou.service.ResumeService;
 import com.example.wuyou.utils.UuidUtils;
@@ -24,20 +25,24 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Autowired
     private ResumeMapper resumeMapper;
-
+    // 获取求职者简历信息
     public Resume getUserResume(String token){
+        // 根据token获取用户ID
         String id = JwtConfig.getTokenInfo(token).getClaim("id").asString();
-        // 判断是否存在该简历
+        // 查询数据库中是否已存在该用户的简历信息
         QueryWrapper<Resume> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id", id);
         Resume result = resumeMapper.selectOne(queryWrapper);
+        // 如果不存在返回暂无数据
         if(result == null) {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR, "暂无数据");
         }
+        // 如果存在返回查询结果
         return result;
     }
-
+    // 更新简历信息
     public Boolean updateResume(Resume params){
+        // 根据主键ID更新简历信息，返回更新成功个数
          int count = resumeMapper.updateById(params);
          return count > 0;
     }
@@ -58,12 +63,30 @@ public class ResumeServiceImpl implements ResumeService {
         }
         return result;
     }
-
+    // 创建新的简历信息
     public Boolean addResume(Resume params){
         // 生成uuid
         String id = new UuidUtils().getShortUuid();
+        // 设置简历ID
         params.setId(id);
+        // 执行插入语句，返回插入成功个数
         int count = resumeMapper.insert(params);
         return count > 0;
+    }
+
+    // 删除简历信息
+    public Boolean deleteResume(String id){
+        int count = resumeMapper.deleteById(id);
+        return count > 0;
+    }
+
+    // 管理员获取简历列表
+    public PageListResponse getList(long current, long pageSize){
+        // 分页查询
+        Page<Resume> page = resumeMapper.selectPage(new Page<>(current, pageSize), null);
+        PageListResponse result = new PageListResponse();
+        result.setList(page.getRecords());
+        result.setTotal(page.getTotal());
+        return result;
     }
 }

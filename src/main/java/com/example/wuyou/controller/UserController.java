@@ -1,13 +1,14 @@
 package com.example.wuyou.controller;
 
+import com.example.wuyou.common.PageRequest;
 import com.example.wuyou.model.dto.*;
+import com.example.wuyou.model.vo.UserInfoVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.BeanUtils;
 import com.example.wuyou.service.UserService;
-import com.example.wuyou.model.vo.UserInfoVo;
 import com.example.wuyou.model.entity.User;
 import com.example.wuyou.common.BaseResponse;
 import com.example.wuyou.common.ResultUtils;
@@ -70,6 +71,36 @@ public class UserController{
         String username = LoginRequest.getUsername();
         String password = LoginRequest.getPassword();
         LoginResponse result = userService.login(username,password);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "获取用户列表")
+    @PostMapping("/getUserList")
+    public BaseResponse<PageListResponse<User>> getUserList(@RequestBody PageRequest params){
+        long current = params.getCurrent();
+        long pageSize = params.getPageSize();
+        PageListResponse<User> result = userService.getUserList(current, pageSize);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "新增用户信息")
+    @PostMapping("/addUser")
+    public BaseResponse<Boolean> addUser(@RequestBody User params){
+        Boolean result = userService.addUser(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "更新用户信息")
+    @PostMapping("/updateUser")
+    public BaseResponse<Boolean> updateUser(@RequestBody User params){
+        Boolean result = userService.updateUser(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "删除用户信息")
+    @DeleteMapping("/deleteUser/{id}")
+    public BaseResponse<Boolean> deleteUser(@PathVariable("id") String id){
+        Boolean result = userService.deleteUser(id);
         return ResultUtils.success(result);
     }
 

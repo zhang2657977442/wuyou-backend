@@ -1,6 +1,7 @@
 package com.example.wuyou.service;
 
 import com.example.wuyou.model.dto.LoginResponse;
+import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.model.entity.User;
 import com.example.wuyou.model.dto.GetOpenIdResponse;
 import com.example.wuyou.model.dto.WxUserLoginResponse;
@@ -20,6 +21,14 @@ public interface UserService{
     boolean switchRole(String id, String role);
 
     LoginResponse login(String username, String password);
+
+    PageListResponse getUserList(long current, long pageSize);
+
+    Boolean deleteUser(String id);
+
+    Boolean addUser(User params);
+
+    Boolean updateUser(User params);
 
 
 }

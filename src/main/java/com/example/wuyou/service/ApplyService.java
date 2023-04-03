@@ -12,4 +12,6 @@ public interface ApplyService {
 
     PageListResponse getApplyList(long current, long pageSize, String userId, ApplyTypeEnum type);
 
+    Boolean delete(String id);
+
 }

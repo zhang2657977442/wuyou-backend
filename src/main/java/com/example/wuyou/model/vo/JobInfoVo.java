@@ -60,8 +60,11 @@ public class JobInfoVo implements Serializable{
     /** 地址详情 */
     @ApiModelProperty(name = "地址详情",notes = "")
     private String address ;
-    /** 职位名称 */
-    @ApiModelProperty(name = "职位名称",notes = "")
+    /** 岗位ID */
+    @ApiModelProperty(name = "岗位ID",notes = "")
+    private String postId ;
+    /** 岗位名称 */
+    @ApiModelProperty(name = "岗位名称",notes = "")
     private String postName ;
     /** 职位类别 */
     @ApiModelProperty(name = "职位类别",notes = "")

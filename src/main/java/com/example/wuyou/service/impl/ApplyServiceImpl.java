@@ -8,6 +8,7 @@ import com.example.wuyou.mapper.ApplyMapper;
 import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.model.entity.Apply;
 import com.example.wuyou.model.enums.ApplyTypeEnum;
+import com.example.wuyou.model.vo.ApplyVo;
 import com.example.wuyou.model.vo.JobInfoVo;
 import com.example.wuyou.model.vo.ResumeVo;
 import com.example.wuyou.service.ApplyService;
@@ -15,22 +16,34 @@ import com.example.wuyou.utils.UuidUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ApplyServiceImpl implements ApplyService {
     @Autowired
     private ApplyMapper applyMapper;
-
+    // 增加应聘信息
     public Boolean addApply(String userId, String dataId, ApplyTypeEnum type){
+        // 创建Apply实体类
         Apply apply = new Apply();
+        // 生成uuid
         String id = new UuidUtils().getShortUuid();
+        // 设置应聘ID
         apply.setId(id);
+        // 设置应聘类型
         apply.setType(type);
+        // 设置应聘用户ID
         apply.setUserId(userId);
+        // 设置应聘数据ID
         apply.setDataId(dataId);
+        // 执行插入语句，返回插入成功个数
         int result = applyMapper.insert(apply);
         if(result > 0){
             return result > 0;
-        }else{
+        }
+        // 否则提示操作失败
+        else{
             throw new BusinessException(ErrorCode.OPERATION_ERROR);
         }
     }
@@ -78,7 +91,22 @@ public class ApplyServiceImpl implements ApplyService {
             result.setTotal(page.getTotal());
             return result;
         }else{
-            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+            Page<ApplyVo> cPage = applyMapper.getMSYQ(new Page<>(current, pageSize / 2), ApplyTypeEnum.MSYQ);
+            Page<ApplyVo> rPage = applyMapper.getTDJL(new Page<>(current, pageSize / 2), ApplyTypeEnum.TDJL);
+            PageListResponse result = new PageListResponse();
+            List<ApplyVo> list = new ArrayList<>();
+            list.addAll(cPage.getRecords());
+            list.addAll(rPage.getRecords());
+            result.setList(list);
+            result.setTotal(cPage.getTotal() + rPage.getTotal());
+            return result;
         }
+    }
+
+
+    // 删除浏览记录
+    public Boolean delete(String id){
+        int count = applyMapper.deleteById(id);
+        return count > 0;
     }
 }

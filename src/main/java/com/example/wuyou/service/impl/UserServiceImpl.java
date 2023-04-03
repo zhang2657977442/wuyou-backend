@@ -5,7 +5,9 @@ import static com.example.wuyou.constant.WXConfigConstant.APP_ID;
 import static com.example.wuyou.constant.WXConfigConstant.SECRET;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.wuyou.model.dto.LoginResponse;
+import com.example.wuyou.model.dto.PageListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.http.ResponseEntity;
@@ -124,6 +126,39 @@ public class UserServiceImpl implements UserService{
         LoginResponse result = new LoginResponse();
         result.setToken(token);
         return result;
+    }
+
+    public PageListResponse getUserList(long current, long pageSize){
+        // 分页查询
+        Page<User> page = userMapper.selectPage(new Page<>(current, pageSize), null);
+        PageListResponse result = new PageListResponse();
+        result.setList(page.getRecords());
+        result.setTotal(page.getTotal());
+        return result;
+    }
+
+
+    // 删除用户
+    public Boolean deleteUser(String id){
+        int count = userMapper.deleteById(id);
+        return count > 0;
+    }
+
+    // 新增用户
+    public Boolean addUser(User params){
+        // 生成uuid
+        String id = new UuidUtils().getShortUuid();
+        // 设置用户ID
+        params.setId(id);
+        // 执行插入语句，返回插入成功个数
+        int count = userMapper.insert(params);
+        return count > 0;
+    }
+
+    // 更新用户
+    public Boolean updateUser(User params){
+        int count = userMapper.updateById(params);
+        return count > 0;
     }
 
 

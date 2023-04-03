@@ -8,10 +8,7 @@ import com.example.wuyou.service.BrowseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -45,6 +42,13 @@ public class BrowseController {
         long pageSize = params.getPageSize();
         PageListResponse<T> result = browseService.getBrowseList(current, pageSize, userId, type);
         return (T) ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "删除浏览信息")
+    @DeleteMapping("/deleteBrowse/{id}")
+    public BaseResponse<Boolean> deleteBrowse(@PathVariable("id") String id){
+        Boolean result = browseService.deleteBrowse(id);
+        return ResultUtils.success(result);
     }
 }
 

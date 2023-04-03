@@ -55,6 +55,22 @@ public class CompanyController {
         return ResultUtils.success(result);
     }
 
+    // 管理员新增公司信息
+    @ApiOperation(value = "新增公司信息")
+    @PostMapping("/addCompanyInfo")
+    public BaseResponse<Boolean> addCompanyInfo(@RequestBody Company params){
+        Boolean result = companyService.addCompanyInfo(params);
+        return ResultUtils.success(result);
+    }
+
+    // 删除公司信息
+    @ApiOperation(value = "删除公司信息")
+    @DeleteMapping("/deleteCompany/{id}")
+    public BaseResponse<Boolean> deleteCompany(@PathVariable("id") String id){
+        Boolean result = companyService.deleteCompany(id);
+        return ResultUtils.success(result);
+    }
+
     @ApiOperation(value = "更新公司信息")
     @PostMapping("/updateCompanyInfo")
     public BaseResponse<Boolean> updateCompanyInfo(@RequestBody Company params){
@@ -62,6 +78,7 @@ public class CompanyController {
         return ResultUtils.success(result);
     }
 
+    // 招聘者新增公司信息
     @ApiOperation(value = "新增公司信息")
     @PostMapping("/addCompany")
     public BaseResponse<Boolean> addCompany(@RequestBody Company params, HttpServletRequest request){

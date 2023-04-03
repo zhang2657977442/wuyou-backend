@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.wuyou.model.entity.Apply;
 import com.example.wuyou.model.enums.ApplyTypeEnum;
+import com.example.wuyou.model.vo.ApplyVo;
 import com.example.wuyou.model.vo.JobInfoVo;
 import com.example.wuyou.model.vo.ResumeVo;
 import org.apache.ibatis.annotations.Param;
@@ -18,4 +19,12 @@ public interface ApplyMapper extends BaseMapper<Apply>{
     @Select("SELECT r.id, r.birthday, r.name, r.gender, r.education, r.experience, r.skill, r.job_status, r.salary, r.post_id, r.create_time, u.username, u.mobile, u.avatar user_avatar, p.name post_name from user u,apply a,resume r,position p " +
             "where a.user_id = #{user_id} and a.type = #{type} and a.data_id = r.id and r.post_id = p.id and r.user_id = u.id")
     Page<ResumeVo> getMSYQList(Page<ResumeVo> page, @Param("user_id") String userId,  @Param("type") ApplyTypeEnum type);
+
+    @Select("SELECT a.id, u.username, p.name, a.type, a.create_time from user u, apply a, job j, position p " +
+            "where a.type = #{type} and a.data_id = j.id and u.id = a.user_id and j.post_id = p.id")
+    Page<ApplyVo> getTDJL(Page<ApplyVo> page, @Param("type") ApplyTypeEnum type);
+
+    @Select("SELECT a.id, u.username, r.name, a.type, a.create_time from user u, apply a, resume r " +
+            "where a.type = #{type} and a.data_id = r.id and u.id = a.user_id")
+    Page<ApplyVo> getMSYQ(Page<ApplyVo> page, @Param("type") ApplyTypeEnum type);
 }

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum BrowseTypeEnum {
-    LLGW("浏览职位", 0),
+    LLGW("浏览公司", 0),
     LLJL("浏览简历", 1);
 
     @EnumValue

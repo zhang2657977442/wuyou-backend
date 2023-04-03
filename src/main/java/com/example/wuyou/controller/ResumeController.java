@@ -1,13 +1,14 @@
 package com.example.wuyou.controller;
 
 import com.example.wuyou.common.BaseResponse;
+import com.example.wuyou.common.PageRequest;
 import com.example.wuyou.common.ResultUtils;
 import com.example.wuyou.model.dto.GetResumeListRequest;
 import com.example.wuyou.model.entity.Resume;
 import com.example.wuyou.model.dto.PageListResponse;
+import com.example.wuyou.model.entity.Welfare;
 import com.example.wuyou.model.vo.ResumeVo;
 import com.example.wuyou.service.ResumeService;
-import com.example.wuyou.common.PageRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,22 @@ public class ResumeController {
     @PostMapping("/addResume")
     public BaseResponse<Boolean> addResume(@RequestBody Resume params){
         Boolean result = resumeService.addResume(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "删除简历信息")
+    @DeleteMapping("/deleteResume/{id}")
+    public BaseResponse<Boolean> deleteResume(@PathVariable("id") String id){
+        Boolean result = resumeService.deleteResume(id);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "管理员获取简历列表")
+    @PostMapping("/getList")
+    public BaseResponse<PageListResponse<Resume>> getList(@RequestBody PageRequest params){
+        long current = params.getCurrent();
+        long pageSize = params.getPageSize();
+        PageListResponse<Resume> result = resumeService.getList(current, pageSize);
         return ResultUtils.success(result);
     }
 

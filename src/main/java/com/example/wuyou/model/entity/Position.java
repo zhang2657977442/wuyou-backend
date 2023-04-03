@@ -2,6 +2,7 @@ package com.example.wuyou.model.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.wuyou.handler.DateTypeHandler;
 import io.swagger.annotations.ApiModel;
@@ -22,6 +23,7 @@ import java.util.Date;
 public class Position implements Serializable,Cloneable {
     /** 主键 */
     @ApiModelProperty(name = "主键",notes = "")
+    @TableId
     private String  id ;
     /** 名称 */
     @ApiModelProperty(name = "名称",notes = "")

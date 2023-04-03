@@ -14,5 +14,9 @@ public interface CompanyService {
 
     Boolean updateCompanyInfo(Company params);
 
+    Boolean addCompanyInfo(Company params);
+
+    Boolean deleteCompany(String id);
+
     Boolean addCompany(Company params,String token);
 }

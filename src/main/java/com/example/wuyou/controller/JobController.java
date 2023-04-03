@@ -1,10 +1,12 @@
 package com.example.wuyou.controller;
 
 import com.example.wuyou.common.BaseResponse;
+import com.example.wuyou.common.PageRequest;
 import com.example.wuyou.common.ResultUtils;
 import com.example.wuyou.model.dto.GetJobListRequest;
 import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.model.entity.Job;
+import com.example.wuyou.model.entity.Resume;
 import com.example.wuyou.model.vo.JobInfoVo;
 import com.example.wuyou.service.JobService;
 import io.swagger.annotations.Api;
@@ -55,5 +57,6 @@ public class JobController {
         Boolean result = jobService.deleteJob(id);
         return ResultUtils.success(result);
     }
+
 
 }

@@ -14,7 +14,7 @@ public class MetaHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         // 插入操作时，添加默认数据
         this.fillStrategy(metaObject,"role", UserRoleEnum.DEFAULT);
-        this.fillStrategy(metaObject,"enableStatus", true);
+        this.fillStrategy(metaObject,"enableStatus", false);
         this.fillStrategy(metaObject,"updateTime", new Date());
         this.fillStrategy(metaObject,"registerDate", new Date());
         this.fillStrategy(metaObject,"createTime", new Date());
@@ -23,8 +23,7 @@ public class MetaHandler implements MetaObjectHandler {
 
     @Override
     public void updateFill(MetaObject metaObject) {// 更新操作时 添加默认数据
-        // TODO Auto-generated method stub
-
+        this.fillStrategy(metaObject,"updateTime", new Date());
     }
 
 }

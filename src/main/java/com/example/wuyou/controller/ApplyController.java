@@ -8,10 +8,7 @@ import com.example.wuyou.service.ApplyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -36,7 +33,7 @@ public class ApplyController {
         return ResultUtils.success(result);
     }
 
-    @ApiOperation(value = "删除应聘信息")
+    @ApiOperation(value = "取消应聘信息")
     @PostMapping("/deleteApply")
     public BaseResponse<Boolean> deleteApply(@RequestBody DeleteApplyRequest params){
         String userId =  params.getUserId();
@@ -65,6 +62,13 @@ public class ApplyController {
         long pageSize = params.getPageSize();
         PageListResponse<T> result = applyService.getApplyList(current, pageSize, userId, type);
         return (T) ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "删除应聘信息")
+    @DeleteMapping("/deleteApply/{id}")
+    public BaseResponse<Boolean> delete(@PathVariable("id") String id){
+        Boolean result = applyService.delete(id);
+        return ResultUtils.success(result);
     }
 
 

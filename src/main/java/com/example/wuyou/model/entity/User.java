@@ -19,12 +19,12 @@ import lombok.Data;
  */
 
 @ApiModel(value = "用户模型",description = "")
-@Data
 @TableName(autoResultMap = true)
+@Data
 public class User implements Serializable,Cloneable{
     @ApiModelProperty(name = "主键",notes = "")
     @TableId
-    private String  id ;
+    private String id ;
     /** 微信用户id */
     @ApiModelProperty(name = "微信用户id",notes = "")
     private String openId ;

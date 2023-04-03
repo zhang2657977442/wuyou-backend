@@ -2,6 +2,7 @@ package com.example.wuyou.model.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.wuyou.handler.DateTypeHandler;
 import io.swagger.annotations.ApiModel;
@@ -16,11 +17,12 @@ import java.util.Date;
  * @author : One Direction
  * @date : 2022-12-13
  */
-@Data
 @ApiModel(value = "福利信息",description = "")
 @TableName(autoResultMap = true)
+@Data
 public class Welfare implements Serializable,Cloneable{
     @ApiModelProperty(name = "主键",notes = "")
+    @TableId
     private String id ;
     /** 名称 */
     @ApiModelProperty(name = "名称",notes = "")

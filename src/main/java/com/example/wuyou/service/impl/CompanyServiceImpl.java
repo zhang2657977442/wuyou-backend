@@ -40,37 +40,60 @@ public class CompanyServiceImpl implements CompanyService {
         result.setTotal(page.getTotal());
         return result;
     }
-
+    // 获取公司信息
     public CompanyInfoVo getCompanyInfo(String id){
-        // 分页查询
+        // 执行查询公司信息Sql语句
         CompanyInfoVo result = companyMapper.getCompanyInfo(id);
+        // 如果不存在返回暂无数据
         if(result == null) {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR, "暂无数据");
         }
+        // 如果存在返回查询结果
         return result;
     }
 
+    // 招聘者新增公司信息
+    public Boolean addCompany(Company params,String token){
+        // 生成uuid
+        String id = new UuidUtils().getShortUuid();
+        // 设置公司信息ID
+        params.setId(id);
+        // 执行插入语句，返回插入成功个数
+        int count = companyMapper.insert(params);
+        // 更新招聘者信息中的公司ID
+        String UserId = JwtConfig.getTokenInfo(token).getClaim("id").asString();
+        User user = userMapper.selectById(UserId);
+        // 如果聘者不存在，提示用户不存在
+        if (user == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户不存在");
+        }
+        // 如果用户存在，更新招聘者的公司ID
+        user.setCompanyId(id);
+        int total = userMapper.updateById(user);
+        // 插入和更新同时完成视为操作成功
+        return count > 0 && total > 0;
+    }
+
+    // 删除公司信息
+    public Boolean deleteCompany(String id){
+        int count = companyMapper.deleteById(id);
+        return count > 0;
+    }
+
+    // 管理员新增公司信息
+    public Boolean addCompanyInfo (Company params){
+        // 生成uuid
+        String id = new UuidUtils().getShortUuid();
+        // 设置公司信息ID
+        params.setId(id);
+        int count = companyMapper.insert(params);
+        return count > 0;
+    }
+
+    // 更新公司信息
     public Boolean updateCompanyInfo(Company params){
         int count = companyMapper.updateById(params);
         return count > 0;
     }
 
-    public Boolean addCompany(Company params,String token){
-        // 生成uuid
-        String id = new UuidUtils().getShortUuid();
-        params.setId(id);
-        int count = companyMapper.insert(params);
-
-        // 更新用户信息中的公司ID
-        String UserId = JwtConfig.getTokenInfo(token).getClaim("id").asString();
-        User user = userMapper.selectById(UserId);
-
-        // 用户不存在
-        if (user == null) {
-            throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户不存在");
-        }
-        user.setCompanyId(id);
-        int total = userMapper.updateById(user);
-        return count > 0 && total > 0;
-    }
 }

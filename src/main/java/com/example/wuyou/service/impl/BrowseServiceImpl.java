@@ -8,12 +8,16 @@ import com.example.wuyou.mapper.BrowseMapper;
 import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.model.entity.Browse;
 import com.example.wuyou.model.enums.BrowseTypeEnum;
+import com.example.wuyou.model.vo.BrowseVo;
 import com.example.wuyou.model.vo.CompanyInfoVo;
 import com.example.wuyou.model.vo.ResumeVo;
 import com.example.wuyou.service.BrowseService;
 import com.example.wuyou.utils.UuidUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BrowseServiceImpl implements BrowseService {
@@ -57,7 +61,22 @@ public class BrowseServiceImpl implements BrowseService {
             result.setTotal(page.getTotal());
             return result;
         }else{
-            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+            Page<BrowseVo> cPage = browseMapper.getLLGW(new Page<>(current, pageSize / 2), BrowseTypeEnum.LLGW);
+            Page<BrowseVo> rPage = browseMapper.getLLJL(new Page<>(current, pageSize / 2), BrowseTypeEnum.LLJL);
+            PageListResponse result = new PageListResponse();
+            List<BrowseVo> list = new ArrayList<>();
+            list.addAll(cPage.getRecords());
+            list.addAll(rPage.getRecords());
+            result.setList(list);
+            result.setTotal(cPage.getTotal() + rPage.getTotal());
+            return result;
         }
+    }
+
+
+    // 删除浏览记录
+    public Boolean deleteBrowse(String id){
+        int count = browseMapper.deleteById(id);
+        return count > 0;
     }
 }

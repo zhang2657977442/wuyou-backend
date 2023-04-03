@@ -9,4 +9,6 @@ public interface BrowseService {
 
     PageListResponse getBrowseList(long current, long pageSize, String userId, BrowseTypeEnum type);
 
+    Boolean deleteBrowse(String id);
+
 }

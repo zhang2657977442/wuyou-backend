@@ -12,4 +12,6 @@ public interface CollectService {
 
   PageListResponse getCollectList(long current, long pageSize, String userId, CollectTypeEnum type);
 
+  Boolean delete(String id);
+
 }

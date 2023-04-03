@@ -64,7 +64,7 @@ CREATE TABLE `company`(
     `work_time` VARCHAR(255) NOT NULL   COMMENT '工作时间' ,
     `rest_time` VARCHAR(255) NOT NULL   COMMENT '休息时间' ,
     `work_overtime` VARCHAR(255) NOT NULL   COMMENT '加班情况' ,
-    `enable_status` BOOLEAN NOT NULL  DEFAULT false COMMENT '生效状态' ,
+    `enable_status` BOOLEAN  COMMENT '生效状态' ,
     `create_time` DOUBLE(13,3) NOT NULL   COMMENT '创建时间' ,
     `update_time` DOUBLE(13,3) NOT NULL   COMMENT '更新时间' ,
     PRIMARY KEY (`id`)

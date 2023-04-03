@@ -2,6 +2,7 @@ package com.example.wuyou.model.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.wuyou.handler.DateTypeHandler;
 import com.example.wuyou.model.enums.EducationEnum;
@@ -25,6 +26,7 @@ import java.util.Date;
 @TableName(autoResultMap = true)
 public class Job implements Serializable,Cloneable{
     /** 主键 */
+    @TableId
     @ApiModelProperty(name = "主键",notes = "")
     private String id ;
     /** 公司id */

@@ -20,4 +20,8 @@ public interface ResumeService{
     ResumeVo getResumeInfo(String id);
 
     Boolean addResume(Resume params);
+
+    Boolean deleteResume(String id);
+
+    PageListResponse getList(long current, long pageSize);
 }

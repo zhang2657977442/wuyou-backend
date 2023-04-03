@@ -9,10 +9,7 @@ import com.example.wuyou.service.IndustryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -33,6 +30,27 @@ public class IndustryController {
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
         PageListResponse<Industry> result = industryService.getIndustryList(current, pageSize);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "新增行业信息")
+    @PostMapping("/addIndustry")
+    public BaseResponse<Boolean> addIndustry(@RequestBody Industry params){
+        Boolean result = industryService.addIndustry(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "更新行业信息")
+    @PostMapping("/updateIndustry")
+    public BaseResponse<Boolean> updateIndustry(@RequestBody Industry params){
+        Boolean result = industryService.updateIndustry(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "删除行业信息")
+    @DeleteMapping("/deleteIndustry/{id}")
+    public BaseResponse<Boolean> deleteIndustry(@PathVariable("id") String id){
+        Boolean result = industryService.deleteIndustry(id);
         return ResultUtils.success(result);
     }
 

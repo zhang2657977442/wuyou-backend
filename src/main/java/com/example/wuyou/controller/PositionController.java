@@ -24,12 +24,33 @@ public class PositionController {
     @Autowired
     private PositionService positionService;
 
-    @ApiOperation(value = "获取职位列表")
+    @ApiOperation(value = "获取岗位列表")
     @PostMapping("/getPositionList")
     public BaseResponse<PageListResponse<Position>> getPositionList(@RequestBody PageRequest params){
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
         PageListResponse<Position> result = positionService.getPositionList(current, pageSize);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "新增岗位信息")
+    @PostMapping("/addPosition")
+    public BaseResponse<Boolean> addPosition(@RequestBody Position params){
+        Boolean result = positionService.addPosition(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "更新岗位信息")
+    @PostMapping("/updatePosition")
+    public BaseResponse<Boolean> updatePosition(@RequestBody Position params){
+        Boolean result = positionService.updatePosition(params);
+        return ResultUtils.success(result);
+    }
+
+    @ApiOperation(value = "删除岗位信息")
+    @DeleteMapping("/deletePosition/{id}")
+    public BaseResponse<Boolean> deletePosition(@PathVariable("id") String id){
+        Boolean result = positionService.deletePosition(id);
         return ResultUtils.success(result);
     }
 
