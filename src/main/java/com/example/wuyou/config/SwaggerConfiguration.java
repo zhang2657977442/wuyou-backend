@@ -38,13 +38,13 @@ public class SwaggerConfiguration {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("人才直聘接口文档")
+                .title("无忧直聘接口文档")
                 //创建人
                 .contact(new Contact("One Direction", "https://github.com/zhang2657977442", "2657977442@qq.com"))
                 //版本号
                 .version("1.0")
                 //描述
-                .description("人才直聘接口文档")
+                .description("无忧直聘接口文档")
                 .build();
     }
 

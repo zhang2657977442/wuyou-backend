@@ -8,7 +8,7 @@ spring:
     name: wuyou
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss  #时间戳统一转换为指定格式
-    time-zone: GMT+8  # 时区修改为东8区
+    time-zone:  GMT+8  # 时区修改为东8区
   # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
