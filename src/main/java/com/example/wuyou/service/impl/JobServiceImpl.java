@@ -1,10 +1,12 @@
 package com.example.wuyou.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.wuyou.config.JwtConfig;
 import com.example.wuyou.mapper.JobMapper;
+import com.example.wuyou.mapper.UserMapper;
 import com.example.wuyou.model.dto.PageListResponse;
 import com.example.wuyou.model.entity.Job;
-import com.example.wuyou.model.entity.Resume;
+import com.example.wuyou.model.entity.User;
 import com.example.wuyou.model.vo.JobInfoVo;
 import com.example.wuyou.service.JobService;
 import com.example.wuyou.utils.UuidUtils;
@@ -15,10 +17,21 @@ import org.springframework.stereotype.Service;
 public class JobServiceImpl implements JobService {
     @Autowired
     private JobMapper jobMapper;
+
+    @Autowired
+    private UserMapper userMapper;
     // 根据名称搜索职位
-    public PageListResponse getJobList(long current, long pageSize, String jobName){
+    public PageListResponse getJobList(long current, long pageSize, String jobName, String token){
+        String UserId = JwtConfig.getTokenInfo(token).getClaim("id").asString();
+        User user = userMapper.selectById(UserId);
+        Page<JobInfoVo> page = null;
         // 分页查询
-        Page<JobInfoVo> page = jobMapper.getJobList(new Page<>(current, pageSize), jobName);
+        if(user.getRole().getValue() != 2) {
+            page = jobMapper.getJobList(new Page<>(current, pageSize), jobName);
+        }else{
+            page = jobMapper.getJobAllList(new Page<>(current, pageSize), jobName);
+        }
+
         PageListResponse result = new PageListResponse();
         // 获取列表
         result.setList(page.getRecords());

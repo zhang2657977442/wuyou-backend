@@ -5,7 +5,7 @@ import com.example.wuyou.model.entity.Job;
 
 public interface JobService {
 
-    PageListResponse getJobList(long current, long pageSize, String jobName);
+    PageListResponse getJobList(long current, long pageSize, String jobName, String token);
 
     Boolean updateJobInfo(Job params);
 

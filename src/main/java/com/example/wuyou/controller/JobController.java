@@ -14,6 +14,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * 工作信息;
@@ -36,11 +38,12 @@ public class JobController {
 
     @ApiOperation(value = "获取工作列表")
     @PostMapping("/getJobList")
-    public BaseResponse<PageListResponse<JobInfoVo>> getJobList(@RequestBody GetJobListRequest params){
+    public BaseResponse<PageListResponse<JobInfoVo>> getJobList(@RequestBody GetJobListRequest params, HttpServletRequest request){
         String jobName = params.getJobName();
         long current = params.getCurrent();
         long pageSize = params.getPageSize();
-        PageListResponse<JobInfoVo> result = jobService.getJobList(current, pageSize, jobName);
+        String token = request.getHeader("token");
+        PageListResponse<JobInfoVo> result = jobService.getJobList(current, pageSize, jobName, token);
         return ResultUtils.success(result);
     }
 
