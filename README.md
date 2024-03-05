@@ -22,15 +22,19 @@
 
 ![](https://raw.githubusercontent.com/zhang2657977442/MyPicGo/master/wuyou-backend/%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F.png)
 
+## 数据模型
+
+![](https://github.com/zhang2657977442/MyPicGo/blob/master/wuyou-backend/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B.png?raw=true)
+
 ## 注意事项
+
 + 使用后台管理添加岗位时，要确保有招聘者和该岗位的公司进行绑定，否则getJobList接口查询不到新增的岗位
 
-
 ## 开源不易 谢谢支持
+
 ![](https://raw.githubusercontent.com/zhang2657977442/MyPicGo/master/other/%E8%B5%9E%E8%B5%8F%E7%A0%81.jpg)
 
 如有问题请联系
 + QQ：2657977449 
 + 微信：zhang2657977449
-
 
