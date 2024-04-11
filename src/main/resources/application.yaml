@@ -12,9 +12,9 @@ spring:
   # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.95.245.28:3306/wuyou_recruit?characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
-    username: root
-    password: 661123
+    url: jdbc:mysql://数据库地址+端口/wuyou_recruit?characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
+    username: 数据库用户名
+    password: 数据库密码
     hikari:
       max-lifetime: 120000
   mvc:
